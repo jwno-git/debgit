@@ -266,6 +266,7 @@ sudo apt purge --allow-remove-essential -y \
   ifupdown \
   nano \
   os-prober \
+  vim-tiny \
   zutty
 
 sudo apt autoremove --purge -y
