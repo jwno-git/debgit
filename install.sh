@@ -94,7 +94,7 @@ echo "=== Adding Flathub and installing Flatpaks ==="
 sleep 1.0
 echo
 
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 echo
 
