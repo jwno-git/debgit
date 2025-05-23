@@ -114,7 +114,19 @@ flatpak install -y flathub \
 echo "=== Creating Flatpak menu entries ==="
 sleep 0.5
 
-update-desktop-database /$HOME/.local/share/flatpak/exports/share/applications
+ln -s ~/.local/share/flatpak/exports/share/applications/org.kde.kdenlive.desktop /$HOME/.local/share/applications/org.kde.kdenlive.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/com.obsproject.Studio.desktop /$HOME/.local/share/applications/com.obsproject.Studio.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/net.cozic.joplin_desktop.desktop /$HOME/.local/share/applications/net.cozic.joplin_desktop.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.libreoffice.Libreoffice.calc.desktop /$HOME/.local/share/applications/org.libreoffice.Libreoffice.calc.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.libreoffice.Libreoffice.writer.desktop /$HOME/.local/share/applications/org.libreoffice.Libreoffice.writer.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.gnome.eog.desktop /$HOME/.local/share/applications/org.gnome.eog.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/com.bitwarden.desktop.desktop /$HOME/.local/share/applications/com.bitwarden.desktop.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.mozilla.firefox.desktop /$HOME/.local/share/applications/org.mozilla.firefox.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.gimp.GIMP.desktop /$HOME/.local/share/applications/org.gimp.GIMP.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/io.mpv.Mpv.desktop /$HOME/.local/share/applications/io.mpv.Mpv.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.gnome.Calculator.desktop /$HOME/.local/share/applications/org.gnome.Calculator.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.standardnotes.standardnotes.desktop /$HOME/.local/share/applications/org.standardnotes.standardnotes.desktop
+
 
 echo "=== Setting global Flatpak overrides ==="
 sleep 0.5
@@ -154,7 +166,6 @@ flatpak override org.libreoffice.Libreoffice --user \
 
 flatpak override org.gimp.GIMP --user \
 	--filesystem=home
-
 
 echo "=== Building Hypr Packages ==="
 sleep 1.0
