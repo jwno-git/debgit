@@ -3,8 +3,12 @@ PROMPT='%F{240}%/ %F{1}root %F{49}>%f '
 
 # Path
 export PATH="$HOME/.local/scripts:$PATH"
+export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share"
 export EDITOR="vim"
 export VISUAL="vim"
+export GTK_THEME=Tokyonight-Dark
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_DESKTOP=Hyprland
 
 # Aliases
 alias ff="fastfetch --logo-type chafa --logo "/root/debianlogo.png" --logo-padding-top 2 --logo-padding-left 2 --color-keys magenta --title-color-user 36 --title-color-host magenta"
