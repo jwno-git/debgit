@@ -3,6 +3,7 @@ PROMPT='%F{240}%/ %F{49}>%f '
 
 # Path
 export PATH="$HOME/.local/scripts:$PATH"
+export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export GTK_THEME=Tokyonight-Dark
