@@ -119,7 +119,8 @@ update-desktop-database /$HOME/.local/share/appplications/
 echo "=== Setting global Flatpak overrides ==="
 sleep 0.5
 
-sudo flatpak override --user --filesystem=$HOME/.themes \
+sudo flatpak override --user \
+	--filesystem=$HOME/.themes \
 	--filesystem=$HOME/.icons \
 	--env=GTK_THEME=Tokyonight-Dark \
 	--env=XCURSOR_THEME=RosePine \
