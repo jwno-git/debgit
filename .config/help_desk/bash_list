@@ -1,27 +1,26 @@
-Show current directory "pwd"
-List files "ls"
-List all including hidden "ls -a"
-Change directory "cd /path/to/dir"
-Go up one directory "cd .."
-Create new directory "mkdir name"
-Remove file "rm filename"
-Remove directory "rm -r dirname"
-Copy file or folder "cp source destination"
-Move or rename file "mv oldname newname"
-Show contents of a file "cat filename"
-Search inside files "grep 'text' filename"
-Show running processes "ps aux"
-Filter processes with grep "ps aux | grep name"
-Kill process by PID "kill PID"
-Clear terminal "clear"
-Show command history "history"
-Re-run last command with sudo "sudo !!"
-Redirect output to file "command > file.txt"
-Append output to file "command >> file.txt"
-Run a command in background "command &"
-Run multiple commands "command1 && command2"
-Set a variable "VAR=value"
-Echo a variable "echo $VAR"
-Make script executable "chmod +x script.sh"
-Run a script "./script.sh"
-
+pwd - Show current directory  
+ls - List files  
+ls -a - List all including hidden files  
+cd /path/to/dir - Change directory  
+cd .. - Go up one directory  
+mkdir name - Create new directory  
+rm filename - Remove file  
+rm -r dirname - Remove directory  
+cp source destination - Copy file or folder  
+mv oldname newname - Move or rename file  
+cat filename - Show contents of a file  
+grep 'text' filename - Search inside files  
+ps aux - Show running processes  
+ps aux | grep name - Filter processes with grep  
+kill PID - Kill process by PID  
+clear - Clear terminal  
+history - Show command history  
+sudo !! - Re-run last command with sudo  
+command > file.txt - Redirect output to file  
+command >> file.txt - Append output to file  
+command & - Run a command in background  
+command1 && command2 - Run multiple commands  
+VAR=value - Set a variable  
+echo $VAR - Echo a variable  
+chmod +x script.sh - Make script executable  
+./script.sh - Run a script  
