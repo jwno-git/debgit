@@ -114,7 +114,7 @@ flatpak install -y flathub \
 echo "=== Creating Flatpak menu entries ==="
 sleep 0.5
 
-update-desktop-database /$HOME/.local/share/appplications/
+update-desktop-database /$HOME/.local/share/flatpak/exports/share/applications
 
 echo "=== Setting global Flatpak overrides ==="
 sleep 0.5
