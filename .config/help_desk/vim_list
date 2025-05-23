@@ -1,26 +1,25 @@
-Open file in Vim "vim filename"
-Save file ":w"
-Quit Vim ":q"
-Save and quit ":wq"
-Quit without saving ":q!"
-Undo last change "u"
-Redo change "Ctrl + r"
-Delete current line "dd"
-Copy (yank) current line "yy"
-Paste below current line "p"
-Paste above current line "P"
-Search for word "/word"
-Search and replace (current line) ":s/old/new/g"
-Search and replace (entire file) ":%s/old/new/g"
-Move to start of line "^"
-Move to end of line "$"
-Jump to line number ":42"
-Enter insert mode "i"
-Enter append mode "a"
-Enter visual mode "v"
-Open help ":help"
-Split window horizontally ":split"
-Split window vertically ":vsplit"
-Switch between splits "Ctrl + w, then arrow key"
-Close current split ":q"
-
+vim filename - open file in Vim
+:w - save file
+:q - quit Vim
+:wq - save and quit
+:q! - quit without saving
+u - undo last change
+Ctrl + r - redo change
+dd - delete current line
+yy - copy (yank) current line
+p - paste below current line
+P - paste above current line
+/word - search for word
+:s/old/new/g - search and replace (current line)
+:%s/old/new/g - search and replace (entire file)
+^ - move to start of line
+$ - move to end of line
+:42 - jump to line number
+i - enter insert mode
+a - enter append mode
+v - enter visual mode
+:help - open help
+:split - split window horizontally
+:vsplit - split window vertically
+Ctrl + w, then arrow key - switch between splits
+:q - close current split
