@@ -23,6 +23,10 @@ set showmode
 "Set Line Number Colour
 :highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
+" Custom Commands
+command! Bul %s/^.\+/• &/
+command! Unbul %s/^• //
+
 set termguicolors
 
 colorscheme lunaperche
