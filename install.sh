@@ -325,7 +325,7 @@ sudo cp -r /home/$USER/.themes/Tokyonight-Dark /usr/share/themes/
 sudo cp -r /home/$USER/.root/.config /root/
 sudo cp -r /home/$USER/.root/.zshrc /root/
 sudo cp -r /home/$USER/.root/.vimrc /root/
-sudo cp -r /home/$USER/.root/.zsh /root/
+sudo cp -r /home/$USER/.zsh /root/
 sudo cp -r /home/$USER/.root/debianlogo.png /root/
 
 echo "=== Setting up BTRFS ==="
