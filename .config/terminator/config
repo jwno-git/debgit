@@ -4,7 +4,7 @@
 [keybindings]
 [profiles]
   [[default]]
-    foreground_color = "#A3C7E8"
+    foreground_color = "#B8D4F1"
     icon_bell = False
     background_darkness = 0.8
     background_type = image
