@@ -117,26 +117,26 @@ sudo flatpak install -y flathub \
 echo "=== Creating Flatpak menu entries ==="
 sleep 0.5
 
-ln -s ~/.local/share/flatpak/exports/share/applications/org.kde.kdenlive.desktop $HOME/.local/share/applications/org.kde.kdenlive.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/com.obsproject.Studio.desktop $HOME/.local/share/applications/com.obsproject.Studio.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/net.cozic.joplin_desktop.desktop $HOME/.local/share/applications/net.cozic.joplin_desktop.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.libreoffice.Libreoffice.calc.desktop $HOME/.local/share/applications/org.libreoffice.Libreoffice.calc.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.libreoffice.Libreoffice.writer.desktop $HOME/.local/share/applications/org.libreoffice.Libreoffice.writer.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.gnome.eog.desktop $HOME/.local/share/applications/org.gnome.eog.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/com.bitwarden.desktop.desktop $HOME/.local/share/applications/com.bitwarden.desktop.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.kde.kdenlive.desktop /home/$USER/.local/share/applications/org.kde.kdenlive.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/com.obsproject.Studio.desktop /home/$USER/.local/share/applications/com.obsproject.Studio.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/net.cozic.joplin_desktop.desktop /home/$USER/.local/share/applications/net.cozic.joplin_desktop.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.libreoffice.Libreoffice.calc.desktop /home/$USER/.local/share/applications/org.libreoffice.Libreoffice.calc.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.libreoffice.Libreoffice.writer.desktop /home/$USER/.local/share/applications/org.libreoffice.Libreoffice.writer.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.gnome.eog.desktop /home/$USER/.local/share/applications/org.gnome.eog.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/com.bitwarden.desktop.desktop /home/$USER/.local/share/applications/com.bitwarden.desktop.desktop
 sudo ln -s /var/lib/flatpak/exports/share/applications/org.mozilla.firefox.desktop /usr/share/applications/org.mozilla.firefox.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.gimp.GIMP.desktop $HOME/.local/share/applications/org.gimp.GIMP.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/io.mpv.Mpv.desktop $HOME/.local/share/applications/io.mpv.Mpv.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.gnome.Calculator.desktop $HOME/.local/share/applications/org.gnome.Calculator.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.standardnotes.standardnotes.desktop $HOME/.local/share/applications/org.standardnotes.standardnotes.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.gimp.GIMP.desktop /home/$USER/.local/share/applications/org.gimp.GIMP.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/io.mpv.Mpv.desktop /home/$USER/.local/share/applications/io.mpv.Mpv.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.gnome.Calculator.desktop /home/$USER/.local/share/applications/org.gnome.Calculator.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.standardnotes.standardnotes.desktop /home/$USER/.local/share/applications/org.standardnotes.standardnotes.desktop
 
 
 echo "=== Setting global Flatpak overrides ==="
 sleep 0.5
 
 flatpak override --user \
-	--filesystem=$HOME/.themes \
-	--filesystem=$HOME/.icons \
+	--filesystem=/home/$USER/.themes \
+	--filesystem=/home/$USER/.icons \
 	--env=GTK_THEME=Tokyonight-Dark \
 	--env=XCURSOR_THEME=RosePine \
 	--env=XCURSOR_SIZE=32 \
@@ -176,7 +176,7 @@ flatpak override org.gimp.GIMP --user \
 echo "=== Building Hypr Packages ==="
 sleep 1.0
 echo
-mkdir -p $HOME/.src
+mkdir -p /home/$USER/.src
 git clone https://github.com/zsh-users/zsh-completions ~/.zsh/zsh-completions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
 git clone https://github.com/hyprwm/hyprutils ~/.src/hyprutils
@@ -290,28 +290,28 @@ echo
 echo "=== Unpacking ==="
 sleep 1.0
 echo
-mkdir $HOME/.icons
-mkdir $HOME/.themes
-cd $HOME/.icons/
-tar -xf $HOME/.icons/BreezeX-RosePine-Linux.tar.xz
-tar -xf $HOME/.icons/Nordic-Folders.tar.xz
-tar -xf $HOME/.icons/rose-pine-hyprcursor.tar
-cd $HOME/.themes
-tar -xf $HOME/.themes/Tokyonight-Dark.tar.xz
+mkdir /home/$USER/.icons
+mkdir /home/$USER/.themes
+cd /home/$USER/.icons/
+tar -xf /home/$USER/.icons/BreezeX-RosePine-Linux.tar.xz
+tar -xf /home/$USER/.icons/Nordic-Folders.tar.xz
+tar -xf /home/$USER/.icons/rose-pine-hyprcursor.tar
+cd /home/$USER/.themes
+tar -xf /home/$USER/.themes/Tokyonight-Dark.tar.xz
 cd
 echo
 echo "=== Cleaning Up ==="
 sleep 1.0
 
-mv $HOME/.icons/BreezeX-RosePine-Linux ~/.icons/RosePine
-sudo cp -r $HOME/.icons/RosePine /usr/share/icons/
-sudo cp -r $HOME/.icons/rose-pine-hyprcursor /usr/share/icons/
-sudo cp -r $HOME/.icons/Nordic-Darker /usr/share/icons/
-sudo rm -rf $HOME/.icons/Nordic
-sudo cp -r $HOME/.themes/Tokyonight-Dark /usr/share/themes/
-sudo cp -r $HOME/.root/.config /root/
-sudo cp -r $HOME/.root/.zshrc /root/
-sudo cp -r $HOME/.root/debianlogo.png /root/
+mv /home/$USER/.icons/BreezeX-RosePine-Linux ~/.icons/RosePine
+sudo cp -r /home/$USER/.icons/RosePine /usr/share/icons/
+sudo cp -r /home/$USER/.icons/rose-pine-hyprcursor /usr/share/icons/
+sudo cp -r /home/$USER/.icons/Nordic-Darker /usr/share/icons/
+sudo rm -rf /home/$USER/.icons/Nordic
+sudo cp -r /home/$USER/.themes/Tokyonight-Dark /usr/share/themes/
+sudo cp -r /home/$USER/.root/.config /root/
+sudo cp -r /home/$USER/.root/.zshrc /root/
+sudo cp -r /home/$USER/.root/debianlogo.png /root/
 
 echo "=== Setting up BTRFS ==="
 sleep 1.0
@@ -405,7 +405,5 @@ echo "=== Enabling services ==="
 sudo systemctl daemon-reload
 sudo systemctl enable snapper-boot.service
 sudo systemctl enable snapper-cleanup.timer
-sudo systemctl start snapper-cleanup.timer
 
 echo "=== Snapper configuration complete! ==="
-
