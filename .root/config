@@ -1,0 +1,27 @@
+[global_config]
+  borderless = True
+  ask_before_closing = never
+[keybindings]
+[profiles]
+  [[default]]
+    foreground_color = "#B8D4F1"
+    icon_bell = False
+    background_darkness = 0.8
+    background_type = image
+    background_image = /home/$USER/Pictures/Wallpapers/wallpaper-term.jpg
+    cursor_shape = underline
+    font = Terminus (TTF) Medium 12
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#242424:#640934:#47b413:#e3c401:#32657d:#816cae:#3d78b3:#cde5f5:#444444:#ff5555:#50fa7b:#f1fa8c:#61afef:#c678dd:#56b6c2:#ffffff"
+    use_system_font = False
+    bold_is_bright = True
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
