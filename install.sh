@@ -372,12 +372,12 @@ CONFIG="root"
 TODAY=$(date +%Y-%m-%d)
 
 # Check if we already have a snapshot from today
-EXISTING=$(snapper -c "$CONFIG" list -t single | grep "$TODAY" | grep -c "boot-$TODAY")
+EXISTING=$(sudo snapper -c "$CONFIG" list -t single | grep "$TODAY" | grep -c "boot-$TODAY")
 
 if [ "$EXISTING" -eq 0 ]; then
     echo "Taking daily snapshot for $TODAY"
-    snapper -c "$CONFIG" create --type single --description "boot-$TODAY-$(date +%H:%M)"
-    snapper -c "$CONFIG" cleanup timeline
+    sudo snapper -c "$CONFIG" create --type single --description "boot-$TODAY-$(date +%H:%M)"
+    sudo snapper -c "$CONFIG" cleanup timeline
 else
     echo "Daily snapshot for $TODAY already exists, skipping"
 fi
