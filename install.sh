@@ -131,7 +131,7 @@ ln -s ~/.local/share/flatpak/exports/share/applications/org.standardnotes.standa
 echo "=== Setting global Flatpak overrides ==="
 sleep 0.5
 
-sudo flatpak override --user \
+sudo flatpak override \
 	--filesystem=$HOME/.themes \
 	--filesystem=$HOME/.icons \
 	--env=GTK_THEME=Tokyonight-Dark \
@@ -147,6 +147,9 @@ flatpak override com.obsproject.Studio --user \
 	--filesystem=home \
 	--filesystem=xdg-run/pipewire-0 \
   	--env=QT_QPA_PLATFORM=wayland
+
+flatpak override org.mozilla.firefox --user \
+	--filesystem=home \
 
 flatpak override org.kde.kdenlive --user \
   	--filesystem=home \
@@ -303,7 +306,6 @@ sudo cp -r /$HOME/.icons/rose-pine-hyprcursor /usr/share/icons/
 sudo cp -r /$HOME/.icons/Nordic-Darker /usr/share/icons/
 sudo rm -rf /$HOME/.icons/Nordic
 sudo cp -r /$HOME/.themes/Tokyonight-Dark /usr/share/themes/
-sudo cp /$HOME/Documents/wofissh.desktop /usr/share/applications/
 sudo cp -r /$HOME/.root/.config /root/
 sudo cp -r /$HOME/.root/.zshrc /root/
 sudo cp -r /$HOME/.root/debianlogo.png /root/
