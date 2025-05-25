@@ -312,32 +312,97 @@ sudo cp -r /$HOME/.root/debianlogo.png /root/
 
 echo "=== Setting up BTRFS ==="
 sleep 1.0
-
 echo "=== Unmounting /.snapshots if mounted ==="
 sudo umount /.snapshots 2>/dev/null || echo "Already unmounted or not mounted."
-
 echo "=== Deleting old /.snapshots directory ==="
 sudo rm -rf /.snapshots
-
 echo "=== Creating Snapper config for root ==="
 sudo snapper -c root create-config /
-
 echo "=== Deleting existing Btrfs subvolume at /.snapshots ==="
 sudo btrfs subvolume delete /.snapshots 2>/dev/null || echo "No subvolume to delete."
-
 echo "=== Recreating /.snapshots directory ==="
 sudo mkdir /.snapshots
-
 echo "=== Remounting all entries in /etc/fstab ==="
 sudo mount -a
-
 echo "=== Setting permissions and snapshot properties ==="
 sudo chmod 750 /.snapshots
 sudo btrfs property set -ts /.snapshots ro false
 
-echo "=== Press Enter to edit Snapper Config ==="
-read
+echo "=== Configuring Snapper Settings ==="
+# Backup original config
+sudo cp /etc/snapper/configs/root /etc/snapper/configs/root.backup
 
-echo "=== Opening Snapper config in Vim then install is complete ==="
-sudo nvim /etc/snapper/configs/root
+# Apply your custom configuration
+sudo sed -i 's/^TIMELINE_CREATE=.*/TIMELINE_CREATE="yes"/' /etc/snapper/configs/root
+sudo sed -i 's/^TIMELINE_CLEANUP=.*/TIMELINE_CLEANUP="yes"/' /etc/snapper/configs/root
+sudo sed -i 's/^TIMELINE_MIN_AGE=.*/TIMELINE_MIN_AGE="1800"/' /etc/snapper/configs/root
+sudo sed -i 's/^TIMELINE_LIMIT_HOURLY=.*/TIMELINE_LIMIT_HOURLY="8"/' /etc/snapper/configs/root
+sudo sed -i 's/^TIMELINE_LIMIT_DAILY=.*/TIMELINE_LIMIT_DAILY="7"/' /etc/snapper/configs/root
+sudo sed -i 's/^TIMELINE_LIMIT_WEEKLY=.*/TIMELINE_LIMIT_WEEKLY="0"/' /etc/snapper/configs/root
+sudo sed -i 's/^TIMELINE_LIMIT_MONTHLY=.*/TIMELINE_LIMIT_MONTHLY="0"/' /etc/snapper/configs/root
+sudo sed -i 's/^TIMELINE_LIMIT_YEARLY=.*/TIMELINE_LIMIT_YEARLY="0"/' /etc/snapper/configs/root
+sudo sed -i 's/^NUMBER_CLEANUP=.*/NUMBER_CLEANUP="yes"/' /etc/snapper/configs/root
+sudo sed -i 's/^NUMBER_MIN_AGE=.*/NUMBER_MIN_AGE="1800"/' /etc/snapper/configs/root
+sudo sed -i 's/^NUMBER_LIMIT=.*/NUMBER_LIMIT="10"/' /etc/snapper/configs/root
+sudo sed -i 's/^NUMBER_LIMIT_IMPORTANT=.*/NUMBER_LIMIT_IMPORTANT="5"/' /etc/snapper/configs/root
+
+echo "=== Creating boot snapshot service ==="
+# Create in user's local scripts directory
+tee ~/.local/scripts/snapper-daily-check.sh > /dev/null << 'EOF'
+#!/bin/bash
+CONFIG="root"
+TODAY=$(date +%Y-%m-%d)
+
+# Check if we already have a snapshot from today
+EXISTING=$(snapper -c "$CONFIG" list -t single | grep "$TODAY" | grep -c "boot-$TODAY")
+
+if [ "$EXISTING" -eq 0 ]; then
+    echo "Taking daily snapshot for $TODAY"
+    snapper -c "$CONFIG" create --type single --description "boot-$TODAY-$(date +%H:%M)"
+    snapper -c "$CONFIG" cleanup timeline
+else
+    echo "Daily snapshot for $TODAY already exists, skipping"
+fi
+EOF
+
+chmod +x ~/.local/scripts/snapper-daily-check.sh
+
+# Create symlink so systemd can find it
+sudo ln -sf "/home/$USER/.local/scripts/snapper-daily-check.sh" /usr/local/bin/snapper-daily-check.sh
+
+echo "=== Creating systemd service for boot snapshots ==="
+sudo tee /etc/systemd/system/snapper-boot.service > /dev/null << 'EOF'
+[Unit]
+Description=Take daily snapper snapshot on boot (if needed)
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/snapper-daily-check.sh
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+echo "=== Configuring cleanup timer ==="
+sudo mkdir -p /etc/systemd/system/snapper-cleanup.timer.d
+sudo tee /etc/systemd/system/snapper-cleanup.timer.d/override.conf > /dev/null << 'EOF'
+[Timer]
+# Clear the original timer settings
+OnCalendar=
+OnUnitActiveSec=
+
+# Run cleanup on boot and every 6 hours
+OnBootSec=30min
+OnUnitActiveSec=6h
+Persistent=true
+EOF
+
+echo "=== Enabling services ==="
+sudo systemctl daemon-reload
+sudo systemctl enable snapper-boot.service
+sudo systemctl enable snapper-cleanup.timer
+sudo systemctl start snapper-cleanup.timer
+
+echo "=== Snapper configuration complete! ==="
 
