@@ -7,12 +7,14 @@ sort = yes
 idle_threshold = 120
 padding = 10
 horizontal_padding = 10
-max-width = 350
+width = (0, 2000)
+height = (0, 1700)
 frame_width = 2
 frame_color = "#24516B"
 separator_color = "#13252F"
 corner_radius = 14
 transparency = 0
+word_wrap = no
 
 # Positioning
 origin = top-right
@@ -26,25 +28,24 @@ show_age_threshold = -1
 mouse_left_click = close_current
 
 # Monitor behaviour
-monitor = eDP-1
+monitor = 0
 
 # Colors
-background = "#000000AA"
+background = "#000000"
 foreground = "#CCCCCC"
 
 # No separate styling for different urgencies
 [urgency_low]
-background = "#000000AA"
+background = "#000000"
 foreground = "#CCCCCC"
 frame_color = "#24516B"
 
 [urgency_normal]
-background = "#000000AA"
+background = "#000000"
 foreground = "#CCCCCC"
 frame_color = "#24516B"
 
 [urgency_critical]
-background = "#271D2AAA"
+background = "#271D2A"
 foreground = "#CCCCCC"
 frame_color = "#24516B"
-
