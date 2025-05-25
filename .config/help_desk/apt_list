@@ -1,18 +1,18 @@
-Update package list "sudo apt update"
-Upgrade all upgradable packages "sudo apt upgrade"
-Upgrade with new package installs (full upgrade) "sudo apt full-upgrade"
-Install a package "sudo apt install <package-name>"
-Remove a package (keep config files) "sudo apt remove <package-name>"
-Remove a package and config files "sudo apt purge <package-name>"
-Reinstall a package "sudo apt install --reinstall <package-name>"
-Search for a package by name "apt search <keyword>"
-Show package info "apt show <package-name>"
-List installed packages "apt list --installed"
-List upgradable packages "apt list --upgradable"
-Clean downloaded .deb files (cache) "sudo apt clean"
-Remove unnecessary packages "sudo apt autoremove"
-Fix broken dependencies "sudo apt --fix-broken install"
-Check for held packages "apt-mark showhold"
-Hold a package at current version "sudo apt-mark hold <package-name>"
-Unhold a package "sudo apt-mark unhold <package-name>"
-Download a .deb file without installing "apt download <package-name>"
+• **apt update** Update package list
+• **apt upgrade** Upgrade all upgradable packages
+• **apt full-upgrade** Upgrade with new package installs (full upgrade)
+• **apt install <package-name>** Install a package
+• **apt remove <package-name>** Remove a package (keep config files)
+• **apt purge <package-name>** Remove a package and config files
+• **apt install --reinstall <package-name>** Reinstall a package
+• **apt search <keyword>** Search for a package by name
+• **apt show <package-name>** Show package info
+• **apt list --installed** List installed packages
+• **apt list --upgradable** List upgradable packages
+• **apt clean** Clean downloaded .deb files (cache)
+• **apt autoremove** Remove unnecessary packages
+• **apt --fix-broken install** Fix broken dependencies
+• **apt-mark showhold** Check for held packages
+• **apt-mark hold <package-name>** Hold a package at current version
+• **apt-mark unhold <package-name>** Unhold a package
+• **apt download <package-name>** Download a .deb file without installing
