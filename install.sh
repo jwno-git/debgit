@@ -131,7 +131,7 @@ ln -s ~/.local/share/flatpak/exports/share/applications/org.standardnotes.standa
 echo "=== Setting global Flatpak overrides ==="
 sleep 0.5
 
-sudo flatpak override \
+flatpak override --user \
 	--filesystem=$HOME/.themes \
 	--filesystem=$HOME/.icons \
 	--env=GTK_THEME=Tokyonight-Dark \
