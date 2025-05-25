@@ -101,7 +101,6 @@ echo
 
 sudo flatpak override \
 	
-
 flatpak install -y flathub \
 	com.obsproject.Studio \
 	org.kde.kdenlive \
@@ -146,17 +145,9 @@ flatpak override --user \
 	--env=XCURSOR_THEME=RosePine \
 	--env=XCURSOR_SIZE=32 \
 	--socket=wayland \
-        --talk-name=org.freedesktop.portal.Desktop \
+        --talk-name=org.freedesktop.portal.Desktop
 
-echo "=== Setting individual overrides ==="
-sleep 0.5
-
-flatpak override com.obsproject.Studio --user \
-	--filesystem=home \
-	--filesystem=xdg-run/pipewire-0 \
-  	--env=QT_QPA_PLATFORM=wayland
-
-sudo flatpak override org.mozilla.firefox \
+ sudo flatpak override org.mozilla.firefox \
 	--filesystem=home \
 	--filesystem=/home/$USER/.themes \
 	--filesystem=/home/$USER/.icons \
@@ -166,7 +157,15 @@ sudo flatpak override org.mozilla.firefox \
 	--env=XCURSOR_THEME=RosePine \
 	--env=XCURSOR_SIZE=32 \
 	--socket=wayland \
-        --talk-name=org.freedesktop.portal.Desktop \
+        --talk-name=org.freedesktop.portal.Desktop
+
+echo "=== Setting individual overrides ==="
+sleep 0.5
+
+flatpak override com.obsproject.Studio --user \
+	--filesystem=home \
+	--filesystem=xdg-run/pipewire-0 \
+  	--env=QT_QPA_PLATFORM=wayland
 
 flatpak override org.kde.kdenlive --user \
   	--filesystem=home \
@@ -203,7 +202,7 @@ git clone https://github.com/hyprwm/hyprpicker ~/.src/hyprpicker
 
 sleep 0.5
 echo "Hyprutils"
-cd ~/.src/hyprutils/
+cd /home/$USER/.src/hyprutils/
 cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
 cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
 sudo cmake --install build
@@ -211,7 +210,7 @@ echo
 
 sleep 0.5
 echo "Hyprlang"
-cd ~/.src/hyprlang/
+cd /home/$USER/.src/hyprlang/
 cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
 cmake --build ./build --config Release --target hyprlang -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
 sudo cmake --install ./build
@@ -219,7 +218,7 @@ echo
 
 sleep 0.5
 echo "Hyprwayland-Scanner"
-cd ~/.src/hyprwayland-scanner/
+cd /home/$USER/.src/hyprwayland-scanner/
 cmake -DCMAKE_INSTALL_PREFIX=/usr -B build
 cmake --build build -j `nproc`
 sudo cmake --install build
@@ -227,7 +226,7 @@ echo
 
 sleep 0.5
 echo "Hyprgraphics"
-cd ~/.src/hyprgraphics/
+cd /home/$USER/.src/hyprgraphics/
 cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
 cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
 sudo cmake --install build
@@ -235,7 +234,7 @@ echo
 
 sleep 0.5
 echo "Hyprlock"
-cd ~/.src/hyprlock/
+cd /home/$USER/.src/hyprlock/
 cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B ./build
 cmake --build ./build --config Release --target hyprlock -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
 sudo cmake --install build
@@ -243,7 +242,7 @@ echo
 
 sleep 0.5
 echo "Hyprpaper"
-cd ~/.src/hyprpaper/
+cd /home/$USER/.src/hyprpaper/
 cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
 cmake --build ./build --config Release --target hyprpaper -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
 sudo cmake --install ./build
@@ -251,7 +250,7 @@ echo
 
 sleep 0.5
 echo "Hyprpicker"
-cd ~/.src/hyprpicker/
+cd /home/$USER/.src/hyprpicker/
 cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
 cmake --build ./build --config Release --target hyprpicker -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
 sudo cmake --install ./build
@@ -325,6 +324,8 @@ sudo rm -rf /home/$USER/.icons/Nordic
 sudo cp -r /home/$USER/.themes/Tokyonight-Dark /usr/share/themes/
 sudo cp -r /home/$USER/.root/.config /root/
 sudo cp -r /home/$USER/.root/.zshrc /root/
+sudo cp -r /home/$USER/.root/.vimrc /root/
+sudo cp -r /home/$USER/.root/.zsh /root/
 sudo cp -r /home/$USER/.root/debianlogo.png /root/
 
 echo "=== Setting up BTRFS ==="
