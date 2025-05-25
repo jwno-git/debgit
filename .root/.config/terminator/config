@@ -25,3 +25,21 @@
       type = Terminal
       parent = window0
 [plugins]
+
+# Default Terminator Color Palette Reference:
+# Position 0  (Black):         #000000
+# Position 1  (Red):           #cc0000
+# Position 2  (Green):         #4e9a06
+# Position 3  (Yellow):        #c4a000
+# Position 4  (Blue):          #3465a4
+# Position 5  (Magenta):       #75507b
+# Position 6  (Cyan):          #06989a
+# Position 7  (White):         #d3d7cf
+# Position 8  (Bright Black):  #555753
+# Position 9  (Bright Red):    #ef2929
+# Position 10 (Bright Green):  #8ae234
+# Position 11 (Bright Yellow): #fce94f
+# Position 12 (Bright Blue):   #729fcf
+# Position 13 (Bright Magenta):#ad7fa8
+# Position 14 (Bright Cyan):   #34e2e2
+# Position 15 (Bright White):  #eeeeec
