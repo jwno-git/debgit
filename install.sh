@@ -99,6 +99,9 @@ sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub
 
 echo
 
+sudo flatpak override \
+	
+
 flatpak install -y flathub \
 	com.obsproject.Studio \
 	org.kde.kdenlive \
@@ -137,6 +140,8 @@ sleep 0.5
 flatpak override --user \
 	--filesystem=/home/$USER/.themes \
 	--filesystem=/home/$USER/.icons \
+ 	--filesystem=xdg-config/gtk-3.0 \
+	--filesystem=xdg-config/gtk-4.0 \
 	--env=GTK_THEME=Tokyonight-Dark \
 	--env=XCURSOR_THEME=RosePine \
 	--env=XCURSOR_SIZE=32 \
@@ -153,6 +158,15 @@ flatpak override com.obsproject.Studio --user \
 
 sudo flatpak override org.mozilla.firefox \
 	--filesystem=home \
+	--filesystem=/home/$USER/.themes \
+	--filesystem=/home/$USER/.icons \
+ 	--filesystem=xdg-config/gtk-3.0 \
+	--filesystem=xdg-config/gtk-4.0 \
+	--env=GTK_THEME=Tokyonight-Dark \
+	--env=XCURSOR_THEME=RosePine \
+	--env=XCURSOR_SIZE=32 \
+	--socket=wayland \
+        --talk-name=org.freedesktop.portal.Desktop \
 
 flatpak override org.kde.kdenlive --user \
   	--filesystem=home \
