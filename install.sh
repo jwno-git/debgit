@@ -95,37 +95,40 @@ sleep 1.0
 echo
 
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 echo
 
 flatpak install -y flathub \
-  com.obsproject.Studio \
-  org.kde.kdenlive \
-  net.cozic.joplin_desktop \
-  org.libreoffice.LibreOffice \
-  org.gnome.eog \
-  com.bitwarden.desktop \
-  org.mozilla.firefox \
-  org.gimp.GIMP \
-  io.mpv.Mpv \
-  org.gnome.Calculator \
-  org.standardnotes.standardnotes \
+	com.obsproject.Studio \
+	org.kde.kdenlive \
+	net.cozic.joplin_desktop \
+	org.libreoffice.LibreOffice \
+	org.gnome.eog \
+	com.bitwarden.desktop \
+	org.gimp.GIMP \
+	io.mpv.Mpv \
+	org.gnome.Calculator \
+	org.standardnotes.standardnotes \
+
+sudo flatpak install -y flathub \
+	org.mozilla.firefox
 
 echo "=== Creating Flatpak menu entries ==="
 sleep 0.5
 
-ln -s ~/.local/share/flatpak/exports/share/applications/org.kde.kdenlive.desktop /$HOME/.local/share/applications/org.kde.kdenlive.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/com.obsproject.Studio.desktop /$HOME/.local/share/applications/com.obsproject.Studio.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/net.cozic.joplin_desktop.desktop /$HOME/.local/share/applications/net.cozic.joplin_desktop.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.libreoffice.Libreoffice.calc.desktop /$HOME/.local/share/applications/org.libreoffice.Libreoffice.calc.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.libreoffice.Libreoffice.writer.desktop /$HOME/.local/share/applications/org.libreoffice.Libreoffice.writer.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.gnome.eog.desktop /$HOME/.local/share/applications/org.gnome.eog.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/com.bitwarden.desktop.desktop /$HOME/.local/share/applications/com.bitwarden.desktop.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.mozilla.firefox.desktop /$HOME/.local/share/applications/org.mozilla.firefox.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.gimp.GIMP.desktop /$HOME/.local/share/applications/org.gimp.GIMP.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/io.mpv.Mpv.desktop /$HOME/.local/share/applications/io.mpv.Mpv.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.gnome.Calculator.desktop /$HOME/.local/share/applications/org.gnome.Calculator.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.standardnotes.standardnotes.desktop /$HOME/.local/share/applications/org.standardnotes.standardnotes.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.kde.kdenlive.desktop $HOME/.local/share/applications/org.kde.kdenlive.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/com.obsproject.Studio.desktop $HOME/.local/share/applications/com.obsproject.Studio.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/net.cozic.joplin_desktop.desktop $HOME/.local/share/applications/net.cozic.joplin_desktop.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.libreoffice.Libreoffice.calc.desktop $HOME/.local/share/applications/org.libreoffice.Libreoffice.calc.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.libreoffice.Libreoffice.writer.desktop $HOME/.local/share/applications/org.libreoffice.Libreoffice.writer.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.gnome.eog.desktop $HOME/.local/share/applications/org.gnome.eog.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/com.bitwarden.desktop.desktop $HOME/.local/share/applications/com.bitwarden.desktop.desktop
+sudo ln -s /var/lib/flatpak/exports/share/applications/org.mozilla.firefox.desktop /usr/share/applications/org.mozilla.firefox.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.gimp.GIMP.desktop $HOME/.local/share/applications/org.gimp.GIMP.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/io.mpv.Mpv.desktop $HOME/.local/share/applications/io.mpv.Mpv.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.gnome.Calculator.desktop $HOME/.local/share/applications/org.gnome.Calculator.desktop
+ln -s ~/.local/share/flatpak/exports/share/applications/org.standardnotes.standardnotes.desktop $HOME/.local/share/applications/org.standardnotes.standardnotes.desktop
 
 
 echo "=== Setting global Flatpak overrides ==="
@@ -148,7 +151,7 @@ flatpak override com.obsproject.Studio --user \
 	--filesystem=xdg-run/pipewire-0 \
   	--env=QT_QPA_PLATFORM=wayland
 
-flatpak override org.mozilla.firefox --user \
+sudo flatpak override org.mozilla.firefox \
 	--filesystem=home \
 
 flatpak override org.kde.kdenlive --user \
@@ -173,7 +176,7 @@ flatpak override org.gimp.GIMP --user \
 echo "=== Building Hypr Packages ==="
 sleep 1.0
 echo
-mkdir -p /$HOME/.src
+mkdir -p $HOME/.src
 git clone https://github.com/zsh-users/zsh-completions ~/.zsh/zsh-completions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
 git clone https://github.com/hyprwm/hyprutils ~/.src/hyprutils
@@ -287,28 +290,28 @@ echo
 echo "=== Unpacking ==="
 sleep 1.0
 echo
-mkdir /$HOME/.icons
-mkdir /$HOME/.themes
-cd /$HOME/.icons/
-tar -xf /$HOME/.icons/BreezeX-RosePine-Linux.tar.xz
-tar -xf /$HOME/.icons/Nordic-Folders.tar.xz
-tar -xf /$HOME/.icons/rose-pine-hyprcursor.tar
-cd /$HOME/.themes
-tar -xf /$HOME/.themes/Tokyonight-Dark.tar.xz
+mkdir $HOME/.icons
+mkdir $HOME/.themes
+cd $HOME/.icons/
+tar -xf $HOME/.icons/BreezeX-RosePine-Linux.tar.xz
+tar -xf $HOME/.icons/Nordic-Folders.tar.xz
+tar -xf $HOME/.icons/rose-pine-hyprcursor.tar
+cd $HOME/.themes
+tar -xf $HOME/.themes/Tokyonight-Dark.tar.xz
 cd
 echo
 echo "=== Cleaning Up ==="
 sleep 1.0
 
-mv /$HOME/.icons/BreezeX-RosePine-Linux ~/.icons/RosePine
-sudo cp -r /$HOME/.icons/RosePine /usr/share/icons/
-sudo cp -r /$HOME/.icons/rose-pine-hyprcursor /usr/share/icons/
-sudo cp -r /$HOME/.icons/Nordic-Darker /usr/share/icons/
-sudo rm -rf /$HOME/.icons/Nordic
-sudo cp -r /$HOME/.themes/Tokyonight-Dark /usr/share/themes/
-sudo cp -r /$HOME/.root/.config /root/
-sudo cp -r /$HOME/.root/.zshrc /root/
-sudo cp -r /$HOME/.root/debianlogo.png /root/
+mv $HOME/.icons/BreezeX-RosePine-Linux ~/.icons/RosePine
+sudo cp -r $HOME/.icons/RosePine /usr/share/icons/
+sudo cp -r $HOME/.icons/rose-pine-hyprcursor /usr/share/icons/
+sudo cp -r $HOME/.icons/Nordic-Darker /usr/share/icons/
+sudo rm -rf $HOME/.icons/Nordic
+sudo cp -r $HOME/.themes/Tokyonight-Dark /usr/share/themes/
+sudo cp -r $HOME/.root/.config /root/
+sudo cp -r $HOME/.root/.zshrc /root/
+sudo cp -r $HOME/.root/debianlogo.png /root/
 
 echo "=== Setting up BTRFS ==="
 sleep 1.0
