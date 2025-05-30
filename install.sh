@@ -304,6 +304,12 @@ sudo cp -r /home/$USER/.root/.zshrc /root/
 sudo cp -r /home/$USER/.root/.vimrc /root/
 sudo cp -r /home/$USER/.zsh /root/
 sudo cp -r /home/$USER/.root/debianlogo.png /root/
+sudo chmod +x ~/.local/scripts/command_toggle.sh
+sudo chmod +x ~/.local/scripts/toggle_term.sh
+sudo chmod +x ~/.local/scripts/help_desk.sh
+sudo chmod +x ~/.local/scripts/vim-term.sh
+sudo chmod +x ~/.local/scripts/volume-notify.sh
+sudo chmod +x ~/.local/scripts/wofi-ssh.sh
 
 echo "=== Setting up BTRFS ==="
 sleep 1.0
