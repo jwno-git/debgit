@@ -2,25 +2,18 @@
 
 set -e
 
-echo "!!! INSTALLING DEBIAN 13 (trixie) AND HYPRLAND !!!"
+echo "!!! Begin Install !!!"
 echo
-echo "       Enter to begin or Ctrl + C to cancel       "
 read
-
-echo
-echo "=== Updating Repo's and installing Apps ==="
-
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 
 sudo apt update
 sleep 0.5
 echo
-
 sudo apt modernize-sources -y
 sleep 0.5
 echo
-
 sudo apt install -y \
   blueman \
   bluez \
@@ -33,7 +26,6 @@ sudo apt install -y \
   flatpak \
   fonts-font-awesome \
   fonts-terminus \
-  foot \
   grim \
   hyprland \
   imagemagick \
@@ -95,7 +87,6 @@ sleep 1.0
 echo
 
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 echo
 
@@ -104,7 +95,6 @@ sudo flatpak override \
 flatpak install -y flathub \
 	com.obsproject.Studio \
 	org.kde.kdenlive \
-	net.cozic.joplin_desktop \
 	org.libreoffice.LibreOffice \
 	org.gnome.eog \
 	com.bitwarden.desktop \
@@ -112,43 +102,27 @@ flatpak install -y flathub \
 	io.mpv.Mpv \
 	org.gnome.Calculator \
 	org.standardnotes.standardnotes \
-
-sudo flatpak install -y flathub \
-	org.mozilla.firefox
+ 	org.mozilla.firefox
 
 echo "=== Creating Flatpak menu entries ==="
 sleep 0.5
 
-ln -s ~/.local/share/flatpak/exports/share/applications/org.kde.kdenlive.desktop /home/$USER/.local/share/applications/org.kde.kdenlive.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/com.obsproject.Studio.desktop /home/$USER/.local/share/applications/com.obsproject.Studio.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/net.cozic.joplin_desktop.desktop /home/$USER/.local/share/applications/net.cozic.joplin_desktop.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.libreoffice.Libreoffice.calc.desktop /home/$USER/.local/share/applications/org.libreoffice.Libreoffice.calc.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.libreoffice.Libreoffice.writer.desktop /home/$USER/.local/share/applications/org.libreoffice.Libreoffice.writer.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.gnome.eog.desktop /home/$USER/.local/share/applications/org.gnome.eog.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/com.bitwarden.desktop.desktop /home/$USER/.local/share/applications/com.bitwarden.desktop.desktop
-sudo ln -s /var/lib/flatpak/exports/share/applications/org.mozilla.firefox.desktop /usr/share/applications/org.mozilla.firefox.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.gimp.GIMP.desktop /home/$USER/.local/share/applications/org.gimp.GIMP.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/io.mpv.Mpv.desktop /home/$USER/.local/share/applications/io.mpv.Mpv.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.gnome.Calculator.desktop /home/$USER/.local/share/applications/org.gnome.Calculator.desktop
-ln -s ~/.local/share/flatpak/exports/share/applications/org.standardnotes.standardnotes.desktop /home/$USER/.local/share/applications/org.standardnotes.standardnotes.desktop
-
+# ln -s ~/.local/share/flatpak/exports/share/applications/org.kde.kdenlive.desktop /home/$USER/.local/share/applications/org.kde.kdenlive.desktop
+# ln -s ~/.local/share/flatpak/exports/share/applications/com.obsproject.Studio.desktop /home/$USER/.local/share/applications/com.obsproject.Studio.desktop
+# ln -s ~/.local/share/flatpak/exports/share/applications/org.libreoffice.Libreoffice.calc.desktop /home/$USER/.local/share/applications/org.libreoffice.Libreoffice.calc.desktop
+# ln -s ~/.local/share/flatpak/exports/share/applications/org.libreoffice.Libreoffice.writer.desktop /home/$USER/.local/share/applications/org.libreoffice.Libreoffice.writer.desktop
+# ln -s ~/.local/share/flatpak/exports/share/applications/org.gnome.eog.desktop /home/$USER/.local/share/applications/org.gnome.eog.desktop
+# ln -s ~/.local/share/flatpak/exports/share/applications/com.bitwarden.desktop.desktop /home/$USER/.local/share/applications/com.bitwarden.desktop.desktop
+# ln -s ~/.local/share/flatpak/exports/share/applications/org.gimp.GIMP.desktop /home/$USER/.local/share/applications/org.gimp.GIMP.desktop
+# ln -s ~/.local/share/flatpak/exports/share/applications/io.mpv.Mpv.desktop /home/$USER/.local/share/applications/io.mpv.Mpv.desktop
+# ln -s ~/.local/share/flatpak/exports/share/applications/org.gnome.Calculator.desktop /home/$USER/.local/share/applications/org.gnome.Calculator.desktop
+# ln -s ~/.local/share/flatpak/exports/share/applications/org.standardnotes.standardnotes.desktop /home/$USER/.local/share/applications/org.standardnotes.standardnotes.desktop
+# ln -s ~/.local/share/flatpak/exports/share/applications/org.mozilla.firefox.desktop /home/$USER/.local/share/applications/org.mozilla.firefox.desktop
 
 echo "=== Setting global Flatpak overrides ==="
 sleep 0.5
 
 flatpak override --user \
-	--filesystem=/home/$USER/.themes \
-	--filesystem=/home/$USER/.icons \
- 	--filesystem=xdg-config/gtk-3.0 \
-	--filesystem=xdg-config/gtk-4.0 \
-	--env=GTK_THEME=Tokyonight-Dark \
-	--env=XCURSOR_THEME=RosePine \
-	--env=XCURSOR_SIZE=32 \
-	--socket=wayland \
-        --talk-name=org.freedesktop.portal.Desktop
-
- sudo flatpak override org.mozilla.firefox \
-	--filesystem=home \
 	--filesystem=/home/$USER/.themes \
 	--filesystem=/home/$USER/.icons \
  	--filesystem=xdg-config/gtk-3.0 \
@@ -184,6 +158,9 @@ flatpak override org.libreoffice.Libreoffice --user \
 	--filesystem=home
 
 flatpak override org.gimp.GIMP --user \
+	--filesystem=home
+
+flatpak override org.mozilla.firefox --user \
 	--filesystem=home
 
 echo "=== Building Hypr Packages ==="
