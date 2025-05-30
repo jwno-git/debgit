@@ -80,19 +80,14 @@ sudo apt install -y --no-install-recommends \
   pkg-config \
   wayland-protocols
 
-sleep 1.0
-
 echo "=== Adding Flathub and installing Flatpaks ==="
-sleep 1.0
 echo
 
-flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 echo
 
-sudo flatpak override \
-	
-flatpak install -y flathub \
+sudo flatpak install -y flathub \
 	com.obsproject.Studio \
 	org.kde.kdenlive \
 	org.libreoffice.LibreOffice \
@@ -105,24 +100,23 @@ flatpak install -y flathub \
  	org.mozilla.firefox
 
 echo "=== Creating Flatpak menu entries ==="
-sleep 0.5
 
-# ln -s ~/.local/share/flatpak/exports/share/applications/org.kde.kdenlive.desktop /home/$USER/.local/share/applications/org.kde.kdenlive.desktop
-# ln -s ~/.local/share/flatpak/exports/share/applications/com.obsproject.Studio.desktop /home/$USER/.local/share/applications/com.obsproject.Studio.desktop
-# ln -s ~/.local/share/flatpak/exports/share/applications/org.libreoffice.Libreoffice.calc.desktop /home/$USER/.local/share/applications/org.libreoffice.Libreoffice.calc.desktop
-# ln -s ~/.local/share/flatpak/exports/share/applications/org.libreoffice.Libreoffice.writer.desktop /home/$USER/.local/share/applications/org.libreoffice.Libreoffice.writer.desktop
-# ln -s ~/.local/share/flatpak/exports/share/applications/org.gnome.eog.desktop /home/$USER/.local/share/applications/org.gnome.eog.desktop
-# ln -s ~/.local/share/flatpak/exports/share/applications/com.bitwarden.desktop.desktop /home/$USER/.local/share/applications/com.bitwarden.desktop.desktop
-# ln -s ~/.local/share/flatpak/exports/share/applications/org.gimp.GIMP.desktop /home/$USER/.local/share/applications/org.gimp.GIMP.desktop
-# ln -s ~/.local/share/flatpak/exports/share/applications/io.mpv.Mpv.desktop /home/$USER/.local/share/applications/io.mpv.Mpv.desktop
-# ln -s ~/.local/share/flatpak/exports/share/applications/org.gnome.Calculator.desktop /home/$USER/.local/share/applications/org.gnome.Calculator.desktop
-# ln -s ~/.local/share/flatpak/exports/share/applications/org.standardnotes.standardnotes.desktop /home/$USER/.local/share/applications/org.standardnotes.standardnotes.desktop
-# ln -s ~/.local/share/flatpak/exports/share/applications/org.mozilla.firefox.desktop /home/$USER/.local/share/applications/org.mozilla.firefox.desktop
+sudo ln -s /var/lib/flatpak/exports/share/applications/org.kde.kdenlive.desktop /usr/share/applications/org.kde.kdenlive.desktop
+sudo ln -s /var/lib/flatpak/exports/share/applications/com.obsproject.Studio.desktop /usr/share/applications/com.obsproject.Studio.desktop
+sudo ln -s /var/lib/flatpak/exports/share/applications/org.libreoffice.Libreoffice.calc.desktop /usr/share/applications/org.libreoffice.Libreoffice.calc.desktop
+sudo ln -s /var/lib/flatpak/exports/share/applications/org.libreoffice.Libreoffice.writer.desktop /usr/share/applications/org.libreoffice.Libreoffice.writer.desktop
+sudo ln -s /var/lib/flatpak/exports/share/applications/org.gnome.eog.desktop /usr/share/applications/org.gnome.eog.desktop
+sudo ln -s /var/lib/flatpak/exports/share/applications/com.bitwarden.desktop.desktop /usr/share/applications/com.bitwarden.desktop.desktop
+sudo ln -s /var/lib/flatpak/exports/share/applications/org.gimp.GIMP.desktop /usr/share/applications/org.gimp.GIMP.desktop
+sudo ln -s /var/lib/flatpak/exports/share/applications/io.mpv.Mpv.desktop /usr/share/applications/io.mpv.Mpv.desktop
+sudo ln -s /var/lib/flatpak/exports/share/applications/org.gnome.Calculator.desktop /usr/share/applications/org.gnome.Calculator.desktop
+sudo ln -s /var/lib/flatpak/exports/share/applications/org.standardnotes.standardnotes.desktop /usr/share/applications/org.standardnotes.standardnotes.desktop
+sudo ln -s /var/lib/flatpak/exports/share/applications/org.mozilla.firefox.desktop /usr/share/applications/org.mozilla.firefox.desktop
 
 echo "=== Setting global Flatpak overrides ==="
 sleep 0.5
 
-flatpak override --user \
+sudo flatpak override \
 	--filesystem=/home/$USER/.themes \
 	--filesystem=/home/$USER/.icons \
  	--filesystem=xdg-config/gtk-3.0 \
@@ -136,46 +130,46 @@ flatpak override --user \
 echo "=== Setting individual overrides ==="
 sleep 0.5
 
-flatpak override com.obsproject.Studio --user \
+sudo flatpak override com.obsproject.Studio \
 	--filesystem=home \
 	--filesystem=xdg-run/pipewire-0 \
   	--env=QT_QPA_PLATFORM=wayland
 
-flatpak override org.kde.kdenlive --user \
+sudo flatpak override org.kde.kdenlive \
   	--filesystem=home \
   	--env=QT_QPA_PLATFORM=wayland
 
-flatpak override org.gnome.eog --user \
+sudo flatpak override org.gnome.eog \
   	--filesystem=home
 
-flatpak override io.mpv.Mpv --user \
+sudo flatpak override io.mpv.Mpv \
 	--filesystem=home
 
-flatpak override net.cozic.joplin_desktop --user \
+sudo flatpak override net.cozic.joplin_desktop \
 	--filesystem=home
 
-flatpak override org.libreoffice.Libreoffice --user \
+sudo flatpak override org.libreoffice.Libreoffice \
 	--filesystem=home
 
-flatpak override org.gimp.GIMP --user \
+sudo flatpak override org.gimp.GIMP \
 	--filesystem=home
 
-flatpak override org.mozilla.firefox --user \
+sudo flatpak override org.mozilla.firefox \
 	--filesystem=home
 
 echo "=== Building Hypr Packages ==="
 sleep 1.0
 echo
 mkdir -p /home/$USER/.src
-git clone https://github.com/zsh-users/zsh-completions ~/.zsh/zsh-completions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
-git clone https://github.com/hyprwm/hyprutils ~/.src/hyprutils
-git clone https://github.com/hyprwm/hyprlang ~/.src/hyprlang
-git clone https://github.com/hyprwm/hyprwayland-scanner ~/.src/hyprwayland-scanner
-git clone https://github.com/hyprwm/hyprgraphics ~/.src/hyprgraphics
-git clone https://github.com/hyprwm/hyprlock ~/.src/hyprlock
-git clone https://github.com/hyprwm/hyprpaper ~/.src/hyprpaper
-git clone https://github.com/hyprwm/hyprpicker ~/.src/hyprpicker
+git clone https://github.com/zsh-users/zsh-completions /home/$USER/.zsh/zsh-completions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting /home/$USER/.zsh/zsh-syntax-highlighting
+git clone https://github.com/hyprwm/hyprutils /home/$USER/.src/hyprutils
+git clone https://github.com/hyprwm/hyprlang /home/$USER/.src/hyprlang
+git clone https://github.com/hyprwm/hyprwayland-scanner /home/$USER/.src/hyprwayland-scanner
+git clone https://github.com/hyprwm/hyprgraphics /home/$USER/.src/hyprgraphics
+git clone https://github.com/hyprwm/hyprlock /home/$USER/.src/hyprlock
+git clone https://github.com/hyprwm/hyprpaper /home/$USER/.src/hyprpaper
+git clone https://github.com/hyprwm/hyprpicker /home/$USER/.src/hyprpicker
 
 sleep 0.5
 echo "Hyprutils"
@@ -237,8 +231,6 @@ cd
 
 echo "  !!! Packages installed and overrides applied !!!  "
 echo "Now to install Systemd Boot Loader and Uninstall Grub"
-echo "      Enter to continue or CTRL + c to stop.     "
-read
 
 sleep 1.0
 
@@ -280,8 +272,6 @@ echo
 echo "=== Unpacking ==="
 sleep 1.0
 echo
-mkdir /home/$USER/.icons
-mkdir /home/$USER/.themes
 cd /home/$USER/.icons/
 tar -xf /home/$USER/.icons/BreezeX-RosePine-Linux.tar.xz
 tar -xf /home/$USER/.icons/Nordic-Folders.tar.xz
@@ -304,12 +294,12 @@ sudo cp -r /home/$USER/.root/.zshrc /root/
 sudo cp -r /home/$USER/.root/.vimrc /root/
 sudo cp -r /home/$USER/.zsh /root/
 sudo cp -r /home/$USER/.root/debianlogo.png /root/
-sudo chmod +x ~/.local/scripts/command_toggle.sh
-sudo chmod +x ~/.local/scripts/toggle_term.sh
-sudo chmod +x ~/.local/scripts/help_desk.sh
-sudo chmod +x ~/.local/scripts/vim-term.sh
-sudo chmod +x ~/.local/scripts/volume-notify.sh
-sudo chmod +x ~/.local/scripts/wofi-ssh.sh
+sudo chmod +x /home/$USER/.local/scripts/command_toggle.sh
+sudo chmod +x /home/$USER/.local/scripts/toggle_term.sh
+sudo chmod +x /home/$USER/.local/scripts/help_desk.sh
+sudo chmod +x /home/$USER/.local/scripts/vim-term.sh
+sudo chmod +x /home/$USER/.local/scripts/volume-notify.sh
+sudo chmod +x /home/$USER/.local/scripts/wofi-ssh.sh
 
 echo "=== Setting up BTRFS ==="
 sleep 1.0
