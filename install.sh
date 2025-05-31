@@ -103,7 +103,6 @@ sudo flatpak install -y flathub \
 echo "=== Creating Flatpak menu entries ==="
 
 sudo ln -s /var/lib/flatpak/exports/share/applications/org.kde.kdenlive.desktop /usr/share/applications/org.kde.kdenlive.desktop
-sudo ln -s /var/lib/flatpak/exports/share/applications/com.obsproject.Studio.desktop /usr/share/applications/com.obsproject.Studio.desktop
 sudo ln -s /var/lib/flatpak/exports/share/applications/org.libreoffice.Libreoffice.calc.desktop /usr/share/applications/org.libreoffice.Libreoffice.calc.desktop
 sudo ln -s /var/lib/flatpak/exports/share/applications/org.libreoffice.Libreoffice.writer.desktop /usr/share/applications/org.libreoffice.Libreoffice.writer.desktop
 sudo ln -s /var/lib/flatpak/exports/share/applications/org.gnome.eog.desktop /usr/share/applications/org.gnome.eog.desktop
@@ -129,11 +128,6 @@ sudo flatpak override \
 
 echo "=== Setting individual overrides ==="
 sleep 0.5
-
-sudo flatpak override com.obsproject.Studio \
-	--filesystem=home \
-	--filesystem=xdg-run/pipewire-0 \
-  	--env=QT_QPA_PLATFORM=wayland
 
 sudo flatpak override org.kde.kdenlive \
   	--filesystem=home \
