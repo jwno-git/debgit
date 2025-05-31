@@ -23,6 +23,7 @@ sudo apt install -y \
   chafa \
   cliphist \
   dunst \
+  firefox-esr-l10n-en-ca \
   flatpak \
   fonts-font-awesome \
   fonts-terminus \
@@ -96,8 +97,7 @@ sudo flatpak install -y flathub \
 	org.gimp.GIMP \
 	io.mpv.Mpv \
 	org.gnome.Calculator \
-	org.standardnotes.standardnotes \
- 	org.mozilla.firefox
+	org.standardnotes.standardnotes
 
 echo "=== Creating Flatpak menu entries ==="
 
@@ -111,7 +111,6 @@ sudo ln -s /var/lib/flatpak/exports/share/applications/org.gimp.GIMP.desktop /us
 sudo ln -s /var/lib/flatpak/exports/share/applications/io.mpv.Mpv.desktop /usr/share/applications/io.mpv.Mpv.desktop
 sudo ln -s /var/lib/flatpak/exports/share/applications/org.gnome.Calculator.desktop /usr/share/applications/org.gnome.Calculator.desktop
 sudo ln -s /var/lib/flatpak/exports/share/applications/org.standardnotes.standardnotes.desktop /usr/share/applications/org.standardnotes.standardnotes.desktop
-sudo ln -s /var/lib/flatpak/exports/share/applications/org.mozilla.firefox.desktop /usr/share/applications/org.mozilla.firefox.desktop
 
 echo "=== Setting global Flatpak overrides ==="
 sleep 0.5
@@ -152,9 +151,6 @@ sudo flatpak override org.libreoffice.Libreoffice \
 	--filesystem=home
 
 sudo flatpak override org.gimp.GIMP \
-	--filesystem=home
-
-sudo flatpak override org.mozilla.firefox \
 	--filesystem=home
 
 echo "=== Building Hypr Packages ==="
