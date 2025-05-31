@@ -48,6 +48,7 @@ sudo apt install -y \
   terminator \
   waybar \
   wireplumber \
+  wf-recorder \
   wget \
   wlogout \
   wofi \
@@ -290,7 +291,8 @@ sudo cp -r /home/$USER/.root/.zshrc /root/
 sudo cp -r /home/$USER/.root/.vimrc /root/
 sudo cp -r /home/$USER/.zsh /root/
 sudo cp -r /home/$USER/.root/debianlogo.png /root/
-sudo chmod +x /home/$USER/.local/scripts/command_toggle.sh
+sudo chmod +x /home/$USER/.local/scripts/toggle_record.sh
+sudo chmod +x /home/$USER/.local/scripts/toggle_notes.sh
 sudo chmod +x /home/$USER/.local/scripts/toggle_term.sh
 sudo chmod +x /home/$USER/.local/scripts/help_desk.sh
 sudo chmod +x /home/$USER/.local/scripts/vim-term.sh
