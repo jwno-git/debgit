@@ -4,8 +4,18 @@ set -e
 
 echo "!!! Begin Install !!!"
 read
+
+mv /home/$USER/debgit/.config /home/$USER/
+mv /home/$USER/debgit/.icons /home/$USER/
+mv /home/$USER/debgit/.themes /home/$USER/
+mv /home/$USER/debgit/.local /home/$USER/
+mv /home/$USER/debgit/Documents /home/$USER/
+mv /home/$USER/debgit/.root /home/$USER/
+mv /home/$USER/debgit/Pictures /home/$USER/
+mv /home/$USER/debgit/.vimrc /home/$USER/
+mv /home/$USER/debgit/.zshrc /home/$USER/
+
 echo
-sudo rm -rf /etc/motd
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 
@@ -31,6 +41,7 @@ sudo apt install -y \
   lf \
   lxpolkit \
   network-manager-applet \
+  nftables \
   openssh-client \
   pavucontrol \
   pipewire \
@@ -170,7 +181,7 @@ cmake --build ./build --config Release --target hyprpicker -j`nproc 2>/dev/null 
 sudo cmake --install ./build
 echo
 
-cd
+cd /home/$USER/
 
 echo "Installing Systemd-Boot"
 sudo apt install -y systemd-boot systemd-boot-efi
@@ -231,13 +242,32 @@ cat > /home/$USER/.local/share/applications/bluetoothctl.desktop << 'EOF'
 [Desktop Entry]
 Name=Bluetooth
 Comment=Command-line Bluetooth manager
-Exec=foot --app-id=bluetooth --title="Bluetooth Control" bluetoothctl
+Exec=sh -c 'sudo systemctl start bluetooth && foot --app-id=bluetooth --title="Bluetooth Control" bluetoothctl'
 Icon=bluetooth
 Terminal=false
 Type=Application
 Categories=System;Settings;
 EOF
 
-rm -rf /home/$USER/.root
+sudo sed -i 's/managed=false/managed=true/g' /etc/NetworkManager/NetworkManager.conf
+sudo rm -rf /etc/motd
 
+sudo tee /etc/network/interfaces > /dev/null << 'EOF'
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+EOF
+
+rm -rf /home/$USER/.root
 sudo systemctl enable NetworkManager
+systemctl --user enable pipewire
+systemctl --user enable pipewire-pulse  
+systemctl --user enable wireplumber
+
+chmod +x nftables-setup.sh
+./nftables-setup.sh
