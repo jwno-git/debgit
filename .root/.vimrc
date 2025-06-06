@@ -29,4 +29,6 @@ command! Unbul %s/^• //
 
 set termguicolors
 
+set background=dark
+
 colorscheme lunaperche
