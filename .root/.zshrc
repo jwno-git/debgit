@@ -11,16 +11,14 @@ export XDG_CURRENT_DESKTOP=Hyprland
 export XDG_SESSION_DESKTOP=Hyprland
 
 # Aliases
-alias ff="fastfetch --logo-type chafa --logo "/root/debianlogo.png" --logo-padding-top 2 --logo-padding-left 2 --color-keys magenta --title-color-user 36 --title-color-host magenta"
+alias ff="fastfetch --logo-type sixel --logo "/root/debianlogo.png" --logo-padding-left 2 --logo-padding-right 2 --color-keys magenta --title-color-user 33 --title-color-host magenta"
 alias hyp="Hyprland"
 
 # Plugins
-source /root/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /root/.zsh/zsh-completions/zsh-completions.zsh
+source /root/.src/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /root/.src/.zsh/zsh-completions/zsh-completions.zsh
 
-[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
-
-fpath=(/root/.zsh/zsh-completions/src $fpath)
+fpath=(/root/.src/.zsh/zsh-completions/src $fpath)
 
 fbset -g 2880 1800 2880 1800 32
 clear
@@ -28,10 +26,10 @@ if [[ -n "$DISPLAY" || "$XDG_SESSION_TYPE" == "wayland" ]]; then
   # In GUI terminal
   fastfetch --logo-type chafa \
             --logo "/root/debianlogo.png" \
-            --logo-padding-top 2 \
+            --logo-padding-right 2 \
             --logo-padding-left 2 \
             --color-keys magenta \
-            --title-color-user 36 \
+            --title-color-user 33 \
             --title-color-host magenta
 else
   # In TTY
@@ -40,4 +38,3 @@ else
             --title-color-user 36 \
             --title-color-host magenta
 fi
-
