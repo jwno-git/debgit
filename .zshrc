@@ -11,12 +11,12 @@ export XDG_CURRENT_DESKTOP=Hyprland
 export XDG_SESSION_DESKTOP=Hyprland
 
 # Aliases
-alias ff="fastfetch --logo-type chafa --logo "/$HOME/Pictures/Logos/debianlogob.png" --logo-padding-top 2 --logo-padding-left 2 --color-keys magenta --title-color-user 36 --title-color-host magenta"
+alias ff="fastfetch --logo-type sixel --logo "/$HOME/Pictures/Logos/debianlogob.png" --logo-padding-left 2 --logo-padding-right 2 --color-keys magenta --title-color-user 36 --title-color-host magenta"
 alias hyp="Hyprland"
 
 # Plugins
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh-completions/zsh-completions.zsh
+source ~/.src/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.src/.zsh/zsh-completions/zsh-completions.zsh
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 fpath=(~/.zsh/zsh-completions/src $fpath)
