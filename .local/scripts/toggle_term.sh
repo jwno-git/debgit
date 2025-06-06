@@ -1,10 +1,10 @@
 #!/bin/bash
 
-TERMINAL_BIN="terminator"
+TERMINAL_BIN="foot"
 SPECIAL="special:terminal"
-CLASS_NAME="terminator"
+CLASS_NAME="foot"
 
-# Get all terminator clients
+# Get all foot clients
 CLIENTS=$(hyprctl clients -j | jq -r --arg class "$CLASS_NAME" '.[] | select(.initialClass == $class)')
 
 # If not running, launch and wait
