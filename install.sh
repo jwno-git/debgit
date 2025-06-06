@@ -65,7 +65,6 @@ sudo apt install -y --no-install-recommends \
   libpango1.0-dev \
   libpugixml-dev \
   libspa-0.2-bluetooth \
-  libspa-0.2-jack \
   libspng-dev \
   libsdbus-c++-dev \
   libwayland-dev \
