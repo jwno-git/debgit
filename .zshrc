@@ -17,9 +17,8 @@ alias hyp="Hyprland"
 # Plugins
 source ~/.src/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.src/.zsh/zsh-completions/zsh-completions.zsh
-[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
-fpath=(~/.zsh/zsh-completions/src $fpath)
+fpath=(~/.src/.zsh/zsh-completions/src $fpath)
 
 fbset -g 2880 1800 2880 1800 32
 clear
@@ -27,7 +26,7 @@ if [[ -n "$DISPLAY" || "$XDG_SESSION_TYPE" == "wayland" ]]; then
   # In GUI terminal
   fastfetch --logo-type chafa \
             --logo "$HOME/Pictures/Logos/debianlogob.png" \
-            --logo-padding-top 2 \
+            --logo-padding-right 2 \
             --logo-padding-left 2 \
             --color-keys magenta \
             --title-color-user 36 \
