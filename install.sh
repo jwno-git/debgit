@@ -14,11 +14,14 @@ mv /home/$USER/debgit/.root /home/$USER/
 mv /home/$USER/debgit/Pictures /home/$USER/
 mv /home/$USER/debgit/.vimrc /home/$USER/
 mv /home/$USER/debgit/.zshrc /home/$USER/
-mv /home/$USER/debgit/nftables-setup.sh /home/$USER/
+
+sleep 1.0
 
 echo
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+
+sleep 1.0
 
 sudo apt update
 sudo apt modernize-sources -y
@@ -89,6 +92,8 @@ sudo apt install -y --no-install-recommends \
   pkg-config \
   wayland-protocols
 
+sleep 1.0
+
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 
 flatpak install -y --user flathub \
@@ -98,6 +103,8 @@ flatpak install -y --user flathub \
 	com.bitwarden.desktop \
 	org.gnome.Calculator \
 	org.standardnotes.standardnotes
+
+sleep 1.0
 
 flatpak override --user \
 	--filesystem=xdg-config/gtk-3.0 \
@@ -119,6 +126,8 @@ flatpak override --user org.gnome.eog \
 
 flatpak override --user org.libreoffice.Libreoffice \
 	--filesystem=home
+
+sleep 1.0
 
 cd /home/$USER/
 mkdir -p /home/$USER/.src
@@ -184,6 +193,8 @@ echo
 
 cd /home/$USER/
 
+sleep 1.0
+
 echo "Installing Systemd-Boot"
 sudo apt install -y systemd-boot systemd-boot-efi
 sudo bootctl --path=/boot/efi install
@@ -205,11 +216,15 @@ sudo apt purge --allow-remove-essential -y \
 
 sudo apt autoremove --purge -y
 
+sleep 1.0
+
 echo "Current EFI Boot Entries:"
 sudo efibootmgr
 echo "Enter Boot ID of GRUB to delete (e.g. 0000):"
 read -r BOOT_ID
 sudo efibootmgr -b "$BOOT_ID" -B
+
+sleep 1.0
 
 cd /home/$USER/.icons/
 tar -xf BreezeX-RosePine-Linux.tar.xz
@@ -239,7 +254,8 @@ sudo chmod +x /home/$USER/.local/scripts/volume-notify.sh
 sudo chmod +x /home/$USER/.local/scripts/wofi-ssh.sh
 sudo chmod +x /home/$USER/.local/scripts/nftables-setup.sh
 
-mkdir -p /home/$USER/.local/share/applications
+sleep 1.0
+
 cat > /home/$USER/.local/share/applications/bluetoothctl.desktop << 'EOF'
 [Desktop Entry]
 Name=Bluetooth
@@ -250,6 +266,8 @@ Terminal=false
 Type=Application
 Categories=System;Settings;
 EOF
+
+sleep 1.0
 
 sudo sed -i 's/managed=false/managed=true/g' /etc/NetworkManager/NetworkManager.conf
 sudo rm -rf /etc/motd
@@ -270,5 +288,7 @@ sudo systemctl enable NetworkManager
 systemctl --user enable pipewire
 systemctl --user enable pipewire-pulse  
 systemctl --user enable wireplumber
+
+sleep 1.0
 
 /home/$USER/.local/scripts/nftables-setup.sh
