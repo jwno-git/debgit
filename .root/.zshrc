@@ -29,7 +29,7 @@ if [[ -n "$DISPLAY" || "$XDG_SESSION_TYPE" == "wayland" ]]; then
             --logo-padding-right 2 \
             --logo-padding-left 2 \
             --color-keys magenta \
-            --title-color-user 33 \
+            --title-color-user 31 \
             --title-color-host magenta
 else
   # In TTY
