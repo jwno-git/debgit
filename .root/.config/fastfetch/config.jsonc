@@ -5,60 +5,60 @@
   // Title
      {
       "type": "title",
-      "format": "{#1}╭ {#}{user-name-colored} ──────────"
+      "format": "{#36}╭ {#31}{user-name-colored} {#36}──────────"
     },
     {
       "type": "host",
-      "key": "{#separator}│ {#keys}Host"
+      "key": "{#36}│ {#keys}Host"
     },
     {
       "type": "kernel",
-      "key": "{#separator}│ {#keys}Kernel"
+      "key": "{#36}│ {#keys}Kernel"
     },
     {
       "type": "os",
-      "key": "{#separator}│ {#keys}Os"
-    },
-    {
-      "type": "packages",
-      "key": "{#separator}│ {#keys}Packages"
-    },
-    //{
-    //  "type": "title",
-    //  "format": "{#1} ╰─────────────────────────"
-    //},
-    //{
-    //  "type": "title",
-    //  "format": "{#1} ╭─────────────────────────"
-    //},
-    {
-      "type": "cpu",
-      "temp": true,
-      "key": "{#separator}│ {#keys}CPU"
-    },
-    {
-      "type": "cpuusage",
-      "key": "{#separator}│ {#keys}Cpuusage"
-    },
-    {
-      "type": "processes",
-      "key": "{#separator}│ {#keys}Processes"
-    },
-    {
-      "type": "disk",
-      "key": "{#separator}│ {#keys}Disk"
-    },
-    {
-      "type": "swap",
-      "key": "{#separator}│ {#keys}Swap"
-    },
-    {
-      "type": "memory",
-      "key": "{#separator}│ {#keys}Memory"
+      "key": "{#36}│ {#keys}Os"
     },
     {
       "type": "title",
-      "format": "{#1}╰───────────────────────────────────────────"
+      "format": "{#36}╰──────────────────────────"
+    },
+     {
+      "type": "title",
+      "format": "{#36}╭──────────────────────────"
+    },   
+    {
+      "type": "packages",
+      "key": "{#36}│ {#keys}Packages"
+    },
+    {
+      "type": "cpu",
+      "temp": true,
+      "key": "{#36}│ {#keys}CPU"
+    },
+    {
+      "type": "cpuusage",
+      "key": "{#36}│ {#keys}Cpuusage"
+    },
+    {
+      "type": "processes",
+      "key": "{#36}│ {#keys}Processes"
+    },
+    {
+      "type": "disk",
+      "key": "{#36}│ {#keys}Disk"
+    },
+    {
+      "type": "swap",
+      "key": "{#36}│ {#keys}Swap"
+    },
+    {
+      "type": "memory",
+      "key": "{#36}│ {#keys}Memory"
+    },
+    {
+      "type": "title",
+      "format": "{#36}╰───────────────────────────────────────────"
     },
     "break"
   ]
