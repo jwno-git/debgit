@@ -32,8 +32,11 @@
       "key": "{#36}│ {#keys}Packages"
     },
     {
+      "type": "disk",
+      "key": "{#36}│ {#keys}Disk"
+    },
+    {
       "type": "cpu",
-      "temp": true,
       "key": "{#36}│ {#keys}CPU"
     },
     {
@@ -43,10 +46,6 @@
     {
       "type": "processes",
       "key": "{#36}│ {#keys}Processes"
-    },
-    {
-      "type": "disk",
-      "key": "{#36}│ {#keys}Disk"
     },
     {
       "type": "swap",
