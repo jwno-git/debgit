@@ -11,7 +11,7 @@ export XDG_CURRENT_DESKTOP=Hyprland
 export XDG_SESSION_DESKTOP=Hyprland
 
 # Aliases
-alias ff="fastfetch --logo-type sixel --logo "/root/debianlogo.png" --logo-padding-left 2 --logo-padding-right 2 --color-keys magenta --title-color-user 33 --title-color-host magenta"
+alias ff="fastfetch --logo-type sixel --logo "/root/debianlogo.png" --logo-padding-left 2 --logo-padding-right 2 --color-keys magenta --title-color-user 31 --title-color-host magenta"
 alias hyp="Hyprland"
 
 # Plugins
