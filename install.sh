@@ -27,14 +27,17 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] http
 
 sleep 1.0
 
+sudo apt update
+sudo apt modernize-sources -y
+
+sleep 1.0
+
 echo "=== Setting up zram swap early ==="
 chmod +x /home/$USER/.local/scripts/zram-setup.sh
 /home/$USER/.local/scripts/zram-setup.sh
 
 sleep 1.0
 
-sudo apt update
-sudo apt modernize-sources -y
 sudo apt install -y \
   bluez \
   brave-browser \
