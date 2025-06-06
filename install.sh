@@ -5,6 +5,10 @@ set -e
 echo "!!! Begin Install !!!"
 read
 
+sudo apt update && sudo apt install -y \
+curl \
+gpg
+
 mv /home/$USER/debgit/.config /home/$USER/
 mv /home/$USER/debgit/.icons /home/$USER/
 mv /home/$USER/debgit/.themes /home/$USER/
@@ -23,6 +27,12 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] http
 
 sleep 1.0
 
+echo "=== Setting up zram swap early ==="
+chmod +x /home/$USER/.local/scripts/zram-setup.sh
+/home/$USER/.local/scripts/zram-setup.sh
+
+sleep 1.0
+
 sudo apt update
 sudo apt modernize-sources -y
 sudo apt install -y \
@@ -33,6 +43,8 @@ sudo apt install -y \
   chafa \
   cliphist \
   dunst \
+  fastfetch \
+  fbset \
   firefox-esr-l10n-en-ca \
   flatpak \
   fonts-font-awesome \
@@ -44,6 +56,7 @@ sudo apt install -y \
   jq \
   lf \
   lxpolkit \
+  network-manager \
   network-manager-applet \
   nftables \
   openssh-client \
@@ -56,7 +69,7 @@ sudo apt install -y \
   slurp \
   swappy \
   tar \
-  terminator \
+  vim \
   waybar \
   wireplumber \
   wf-recorder \
@@ -64,7 +77,8 @@ sudo apt install -y \
   wlogout \
   wofi \
   xdg-desktop-portal-gtk \
-  xdg-desktop-portal-wlr
+  xdg-desktop-portal-wlr \
+  zsh
 
 sudo apt install -y --no-install-recommends \
   build-essential \
