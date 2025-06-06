@@ -14,6 +14,7 @@ mv /home/$USER/debgit/.root /home/$USER/
 mv /home/$USER/debgit/Pictures /home/$USER/
 mv /home/$USER/debgit/.vimrc /home/$USER/
 mv /home/$USER/debgit/.zshrc /home/$USER/
+mv /home/$USER/debgit/nftables-setup.sh /home/$USER/
 
 echo
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
@@ -236,6 +237,7 @@ sudo chmod +x /home/$USER/.local/scripts/help_desk.sh
 sudo chmod +x /home/$USER/.local/scripts/vim-term.sh
 sudo chmod +x /home/$USER/.local/scripts/volume-notify.sh
 sudo chmod +x /home/$USER/.local/scripts/wofi-ssh.sh
+sudo chmod +x /home/$USER/.local/scripts/nftables-setup.sh
 
 mkdir -p /home/$USER/.local/share/applications
 cat > /home/$USER/.local/share/applications/bluetoothctl.desktop << 'EOF'
@@ -269,5 +271,4 @@ systemctl --user enable pipewire
 systemctl --user enable pipewire-pulse  
 systemctl --user enable wireplumber
 
-chmod +x nftables-setup.sh
-./nftables-setup.sh
+/home/$USER/.local/scripts/nftables-setup.sh
