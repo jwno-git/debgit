@@ -2,33 +2,32 @@
 
 set -e
 
-echo "Installing Systemd-Boot"
-sudo apt install -y systemd-boot systemd-boot-efi
-sudo bootctl --path=/boot/efi install
+cd /home/$USER/.icons/
+tar -xf BreezeX-RosePine-Linux.tar.xz
+tar -xf rose-pine-hyprcursor.tar.xz
+mv BreezeX-RosePine-Linux RosePine
 
-echo "Removing Grub"
-sudo apt purge --allow-remove-essential -y \
-  grub-common \
-  grub-efi-amd64 \
-  grub-efi-amd64-bin \
-  grub-efi-amd64-signed \
-  grub-efi-amd64-unsigned \
-  grub2-common \
-  shim-signed \
-  ifupdown \
-  nano \
-  os-prober \
-  vim-tiny \
-  zutty
+cd /home/$USER/.themes/
+tar -xf Tokyonight-Dark.tar.xz
 
-sudo apt autoremove --purge -y
+sudo cp -r /home/$USER/.icons/RosePine /usr/share/icons/
+sudo cp -r /home/$USER/.icons/rose-pine-hyprcursor /usr/share/icons/
+sudo cp -r /home/$USER/.themes/Tokyonight-Dark /usr/share/themes/
 
-sleep 1.0
+sudo mkdir -p /root/.src
+sudo mv /home/$USER/.root/.config /root/
+sudo mv /home/$USER/.root/.zshrc /root/
+sudo mv /home/$USER/.root/.vimrc /root/
+sudo mv /home/$USER/.root/debianlogo.png /root/
+sudo cp -r /home/$USER/.zsh /root/.src/
 
-echo "Current EFI Boot Entries:"
-sudo efibootmgr
-echo "Enter Boot ID of GRUB to delete (e.g. 0000):"
-read -r BOOT_ID
-sudo efibootmgr -b "$BOOT_ID" -B
+sudo chmod +x /home/$USER/.local/scripts/toggle_record.sh
+sudo chmod +x /home/$USER/.local/scripts/toggle_notes.sh
+sudo chmod +x /home/$USER/.local/scripts/toggle_term.sh
+sudo chmod +x /home/$USER/.local/scripts/help_desk.sh
+sudo chmod +x /home/$USER/.local/scripts/vim-term.sh
+sudo chmod +x /home/$USER/.local/scripts/volume-notify.sh
+sudo chmod +x /home/$USER/.local/scripts/wofi-ssh.sh
+sudo chmod +x /home/$USER/.local/scripts/nftables-setup.sh
 
 sleep 1.0
