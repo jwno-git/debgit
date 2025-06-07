@@ -72,11 +72,6 @@ focus_follows_mouse yes
 # VARIABLES #
 
 set $mod Mod4
-set $left h
-set $down j
-set $up k
-set $right l
-set $term foot
 set $menu wofi --show drun --layer top
 
 # KEYBINDINGS #
@@ -95,35 +90,11 @@ bindsym $mod+s exec grim -g "$(slurp)" - | swappy -f -
 bindsym $mod+w exec firefox --new-window about:newtab
 bindsym $mod+z exec pgrep waybar && pkill waybar || waybar && nm-applet
 bindsym $mod+Tab focus next
+bindsym $mod+Shift+Tab focus prev
 bindsym $mod+space exec ~/.local/scripts/toggle_term.sh
 bindsym $mod+Escape exec wlogout -b 4
 
-# Terminal
-bindsym $mod+Return exec $term
-
-# Kill focused window
-bindsym $mod+Shift+q kill
-
-# Start your launcher
-bindsym $mod+d exec $menu
-
-# Window management
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-# bindsym $mod+$right focus right
-
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # Move windows
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
-
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -156,12 +127,6 @@ bindsym $mod+Shift+0 move container to workspace number 10
 # Change Workspace (cycling)
 # bindsym $mod+Right workspace next
 # bindsym $mod+Left workspace prev
-
-# Layout stuff
-# bindsym $mod+v splith
-# bindsym $mod+h splitv
-# bindsym $mod+f fullscreen
-# bindsym $mod+Shift+space floating toggle
 
 # Scratchpad
 bindsym $mod+Shift+minus move scratchpad
