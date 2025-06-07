@@ -34,6 +34,7 @@ SCRATCHPAD_WINDOW=$(echo "$WINDOWS_INFO" | jq -r --arg mark "$SCRATCHPAD_MARK" '
 if [[ -n "$SCRATCHPAD_WINDOW" && "$SCRATCHPAD_WINDOW" != "null" ]]; then
     # Found terminal in scratchpad, bring it back
     swaymsg "[con_id=$SCRATCHPAD_WINDOW] move to workspace current"
+    swaymsg "[con_id=$SCRATCHPAD_WINDOW] floating disable"
     swaymsg "[con_id=$SCRATCHPAD_WINDOW] unmark $SCRATCHPAD_MARK"
     swaymsg "[con_id=$SCRATCHPAD_WINDOW] focus"
 else
