@@ -37,7 +37,7 @@
 #TabsToolbar {
   margin-left : 25vw !important;
   margin-top  : 2px !important;
-  height      : 34px !important;
+  height      : 37px !important;
 }
 
 #nav-bar {
@@ -53,9 +53,9 @@
 }
 
 :root[uidensity="compact"] #nav-bar {
-  margin-top  : -37px !important;
+  margin-top  : -36px !important;
   margin-bottom : 2px !important;
-  height      : 30px !important;
+  height      : 37px !important;
 }
 
 :root:not([uidensity="compact"]):not([uidensity="touch"]) #nav-bar {
@@ -71,7 +71,7 @@
 }
 
 #tabs-newtab-button {
-  margin-top  : -6px  !important;
+  margin-top  : 0px  !important;
 }
 
 /* Dragging space */
