@@ -233,6 +233,7 @@ sudo apt install -y --no-install-recommends \
   build-essential \
   cmake \
   g++ \
+  libaudit-dev \
   libcairo2-dev \
   libdrm-dev \
   libgbm-dev \
