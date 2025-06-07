@@ -458,6 +458,7 @@ EOF
 
 echo "Configuring NetworkManager..."
 sudo sed -i 's/managed=false/managed=true/g' /etc/NetworkManager/NetworkManager.conf
+sudo sed -i 's/Adwaita/RosePine/g' /usr/share/icons/default/index.theme
 sudo rm -rf /etc/motd
 
 echo "Setting up network interfaces..."
