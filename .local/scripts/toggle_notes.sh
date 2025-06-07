@@ -1,36 +1,45 @@
 #!/bin/bash
 
 TERMINAL_BIN="flatpak run org.standardnotes.standardnotes"
-SPECIAL="special:standardnotes"
+SCRATCHPAD_MARK="standardnotes"
 CLASS_NAME="Standard Notes"
 
-# Get client info
-CLIENT=$(hyprctl clients -j | jq -r --arg class "$CLASS_NAME" '.[] | select(.initialClass == $class)')
+# Get window info using swaymsg
+WINDOW_INFO=$(swaymsg -t get_tree | jq -r --arg class "$CLASS_NAME" '
+    .. | objects | select(.app_id == $class or .window_properties.class == $class) | 
+    {id: .id, workspace: (.workspace // "unknown"), marks: .marks}
+')
 
 # If not running, launch and wait
-if [[ -z "$CLIENT" ]]; then
+if [[ -z "$WINDOW_INFO" || "$WINDOW_INFO" == "null" ]]; then
     $TERMINAL_BIN &
     
     # Wait for window to appear
     for i in {1..30}; do
         sleep 0.1
-        CLIENT=$(hyprctl clients -j | jq -r --arg class "$CLASS_NAME" '.[] | select(.initialClass == $class)')
-        [[ -n "$CLIENT" ]] && break
+        WINDOW_INFO=$(swaymsg -t get_tree | jq -r --arg class "$CLASS_NAME" '
+            .. | objects | select(.app_id == $class or .window_properties.class == $class) | 
+            {id: .id, workspace: (.workspace // "unknown"), marks: .marks}
+        ')
+        [[ -n "$WINDOW_INFO" && "$WINDOW_INFO" != "null" ]] && break
     done
 
     # Exit here so it stays on screen after launching
     exit 0
 fi
 
-# Get details
-ADDRESS=$(echo "$CLIENT" | jq -r '.address')
-WORKSPACE=$(echo "$CLIENT" | jq -r '.workspace.name')
-ACTIVE_WS=$(hyprctl activeworkspace -j | jq -r '.name')
+# Get window ID
+WINDOW_ID=$(echo "$WINDOW_INFO" | jq -r '.id')
+HAS_MARK=$(echo "$WINDOW_INFO" | jq -r --arg mark "$SCRATCHPAD_MARK" '.marks | contains([$mark])')
 
-# Move to or from special workspace
-if [[ "$WORKSPACE" == "$SPECIAL" ]]; then
-    hyprctl dispatch movetoworkspace "$ACTIVE_WS,address:$ADDRESS"
-    hyprctl dispatch focuswindow "address:$ADDRESS"
+# Toggle between scratchpad and workspace
+if [[ "$HAS_MARK" == "true" ]]; then
+    # Window is in scratchpad, bring it to current workspace
+    swaymsg "[con_id=$WINDOW_ID] move to workspace current"
+    swaymsg "[con_id=$WINDOW_ID] unmark $SCRATCHPAD_MARK"
+    swaymsg "[con_id=$WINDOW_ID] focus"
 else
-    hyprctl dispatch movetoworkspacesilent "$SPECIAL,address:$ADDRESS"
+    # Window is visible, move to scratchpad
+    swaymsg "[con_id=$WINDOW_ID] mark $SCRATCHPAD_MARK"
+    swaymsg "[con_id=$WINDOW_ID] move scratchpad"
 fi
