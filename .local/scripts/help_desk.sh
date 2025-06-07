@@ -13,6 +13,6 @@ if [ -n "$CHOICE" ]; then
             sed 's/^\(<span[^>]*>• <\/span>\)\(.*\)/\1<span foreground="#214351">\2<\/span>/')
         
         # Send notification with 30 second timeout using notify-send (works with mako)
-        notify-send -t 30000 "$CHOICE Commands" "$CONTENT"
+        dunstify -t 30000 "$CHOICE Commands" "$CONTENT"
     fi
 fi
