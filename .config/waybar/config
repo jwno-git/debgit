@@ -21,7 +21,7 @@
 	"spacing": 0,
 
 	// Load Modules
-	"include": ["~/.config/hypr/hyprmodules.json"],
+	"include": ["~/.config/waybar/modules.json"],
 	
 	// Modules Left
 	"modules-left": [
