@@ -40,7 +40,8 @@ client.unfocused #290f34 #290f34 #888888 #290f34 #290f34
 client.focused_inactive #290f34 #290f34 #888888 #290f34 #290f34
 
 # Window opacity (requires Sway 1.8+)
-for_window [app_id=".*"] opacity 0.85
+for_window [app_id="foot"] opacity 0.65
+for_window [app_id="^(?!foot$).*"] opacity 0.85
 
 # Default layout - horizontal splits
 default_orientation vertical
