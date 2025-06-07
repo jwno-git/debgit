@@ -12,7 +12,6 @@ git clone https://github.com/hyprwm/hyprlang /home/$USER/.src/hyprlang
 git clone https://github.com/hyprwm/hyprwayland-scanner /home/$USER/.src/hyprwayland-scanner
 git clone https://github.com/hyprwm/hyprgraphics /home/$USER/.src/hyprgraphics
 git clone https://github.com/hyprwm/hyprlock /home/$USER/.src/hyprlock
-git clone https://github.com/hyprwm/hyprpaper /home/$USER/.src/hyprpaper
 git clone https://github.com/hyprwm/hyprpicker /home/$USER/.src/hyprpicker
 
 echo "Hyprutils"
@@ -48,13 +47,6 @@ cd /home/$USER/.src/hyprlock/
 cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B ./build
 cmake --build ./build --config Release --target hyprlock -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
 sudo cmake --install build
-echo
-
-echo "Hyprpaper"
-cd /home/$USER/.src/hyprpaper/
-cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
-cmake --build ./build --config Release --target hyprpaper -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
-sudo cmake --install ./build
 echo
 
 echo "Hyprpicker"
