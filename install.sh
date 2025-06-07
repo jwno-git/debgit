@@ -446,11 +446,12 @@ cat > /home/$USER/.local/share/applications/bluetoothctl.desktop << 'EOF'
 [Desktop Entry]
 Name=Bluetooth
 Comment=Command-line Bluetooth manager
-Exec=sh -c 'sudo systemctl start bluetooth && foot --app-id=bluetooth --title="Bluetooth Control" bluetoothctl'
+Exec=bash -c 'sudo systemctl start bluetooth && foot --app-id=bluetooth --title="Bluetooth Control" bluetoothctl'
 Icon=bluetooth
 Terminal=false
 Type=Application
 Categories=System;Settings;
+StartupNotify=true
 EOF
 
 echo "Configuring NetworkManager..."
