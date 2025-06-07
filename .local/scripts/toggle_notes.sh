@@ -36,6 +36,7 @@ HAS_MARK=$(echo "$WINDOW_INFO" | jq -r --arg mark "$SCRATCHPAD_MARK" '.marks | c
 if [[ "$HAS_MARK" == "true" ]]; then
     # Window is in scratchpad, bring it to current workspace
     swaymsg "[con_id=$WINDOW_ID] move to workspace current"
+    swaymsg "[con_id=$WINDOW_ID] floating disable"
     swaymsg "[con_id=$WINDOW_ID] unmark $SCRATCHPAD_MARK"
     swaymsg "[con_id=$WINDOW_ID] focus"
 else
