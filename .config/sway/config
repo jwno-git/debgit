@@ -204,10 +204,4 @@ floating_modifier $mod normal
 for_window [app_id="org.gnome.Calculator"] floating enable
 for_window [app_id="org.gnome.Calculator"] resize set 20 ppt 40 ppt
 
-# STATUS BAR #
-
-bar {
-    swaybar_command waybar
-}
-
 include /etc/sway/config.d/*
