@@ -43,7 +43,7 @@ client.focused_inactive #290f34 #290f34 #888888 #290f34 #290f34
 for_window [app_id=".*"] opacity 0.85
 
 # Default layout - horizontal splits
-default_orientation horizontal
+default_orientation vertical
 
 # Font
 font pango:monospace 11
@@ -84,7 +84,7 @@ bindsym $mod+e exec foot -T "lf" lf
 bindsym $mod+l exec hyprlock
 bindsym $mod+m exec flatpak run org.gnome.Calculator
 bindsym $mod+n exec ~/.local/scripts/toggle_notes.sh
-bindsym $mod+Shift+p exec hyprpicker -a
+bindsym $mod+p exec hyprpicker -a
 bindsym $mod+q kill
 bindsym $mod+s exec grim -g "$(slurp)" - | swappy -f -
 bindsym $mod+w exec firefox --new-window about:newtab
@@ -93,6 +93,7 @@ bindsym $mod+Tab focus next
 bindsym $mod+Shift+Tab focus prev
 bindsym $mod+space exec ~/.local/scripts/toggle_term.sh
 bindsym $mod+Escape exec wlogout -b 4
+bindsym $mod+Shift+ENTER splith
 
 # Move windows
 bindsym $mod+Shift+Left move left
