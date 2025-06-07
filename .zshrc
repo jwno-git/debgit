@@ -1,5 +1,5 @@
 # ZSH Config File
-PROMPT='%F{240}%/ %F{49}>%f '
+PROMPT=' %F{240}%/ %F{49}>%f '
 
 # Path
 export PATH="$HOME/.local/scripts:$PATH"
