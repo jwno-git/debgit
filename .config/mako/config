@@ -28,7 +28,7 @@ group-by=app-name
 # ICONS
 icons=1
 max-icon-size=32
-icon-path=/usr/share/icons/RosePine:/usr/share/icons/rose-pine-hyprcursor:/usr/share/pixmaps
+icon-path=/usr/share/icons/RosePine:/usr/share/pixmaps
 
 # ACTIONS
 actions=1
