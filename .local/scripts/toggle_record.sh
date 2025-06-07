@@ -11,7 +11,7 @@ if [[ -f "$PIDFILE" ]] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
     rm -f "$PIDFILE"
     
     # Send notification using notify-send (works with mako)
-    notify-send "Recording Stopped"
+    dunstify "Recording Stopped"
     
 else
     # Start recording
@@ -32,5 +32,5 @@ else
     echo $! > "$PIDFILE"
     
     # Notify recording started
-    notify-send "Recording Started" "Saving to: $FILENAME"
+    dunstify "Recording Started" "Saving to: $FILENAME"
 fi
