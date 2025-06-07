@@ -24,7 +24,7 @@ fbset -g 2880 1800 2880 1800 32
 clear
 if [[ -n "$DISPLAY" || "$XDG_SESSION_TYPE" == "wayland" ]]; then
   # In GUI terminal
-  fastfetch --logo-type chafa \
+  fastfetch --logo-type sixel \
             --logo "$HOME/Pictures/Logos/debianlogob.png" \
             --logo-padding-right 2 \
             --logo-padding-left 2 \
