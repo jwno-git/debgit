@@ -1,5 +1,5 @@
 # ZSH Config File
-PROMPT='%F{240}%/ %F{1}root %F{49}>%f '
+PROMPT=' %F{240}%/ %F{1}root %F{49}>%f '
 
 # Path
 export PATH="$HOME/.local/scripts:$PATH"
@@ -24,7 +24,7 @@ fbset -g 2880 1800 2880 1800 32
 clear
 if [[ -n "$DISPLAY" || "$XDG_SESSION_TYPE" == "wayland" ]]; then
   # In GUI terminal
-  fastfetch --logo-type chafa \
+  fastfetch --logo-type sixel \
             --logo "/root/debianlogo.png" \
             --logo-padding-right 2 \
             --logo-padding-left 2 \
