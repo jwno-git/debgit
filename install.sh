@@ -187,6 +187,7 @@ sudo apt install -y \
   btop \
   chafa \
   cliphist \
+  dunst \
   fastfetch \
   fbset \
   firefox-esr-l10n-en-ca \
@@ -202,7 +203,6 @@ sudo apt install -y \
   libsixel-dev \
   libsixel1 \
   lxpolkit \
-  mako-notifier \
   network-manager \
   network-manager-applet \
   nftables \
