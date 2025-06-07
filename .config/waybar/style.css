@@ -15,18 +15,6 @@ window#waybar {
  * Workspaces 
  * ----------------------------------------------------- */
 /* #0C252C */
-#workspaces {
-    /*background: #000000;*/
-    margin: 1px 4px 1px 4px;
-    padding: 0px 4px 0px 4px;
-    /*border-radius: 20px;
-    border: 2px solid #000000;*/
-    font-weight: normal;
-    font-style: normal;
-    opacity: 1.0;
-    font-size: 4px;
-    color: #000000;
-}
 #workspaces button {
     padding: 0px 4px 0px 4px;
     margin: 2px 3px 2px 3px;
@@ -37,7 +25,7 @@ window#waybar {
     transition: all 0.3s;
     opacity: 0.4;
 }
-#workspaces button.active {
+#workspaces button.focused {
     color: #1e1e2d;
     background: #1E1E2D;
     margin: 2px 3px 2px 3px;
@@ -45,12 +33,6 @@ window#waybar {
     border-radius: 20px;
     border: 2px solid #99CCFF;
     transition: all 0.3s;
-    opacity: 1.0;
-}
-#workspaces button:hover {
-    color: #290F34;
-    background: #222222;
-    border-radius: 20px;
     opacity: 1.0;
 }
 /* -----------------------------------------------------
