@@ -11,7 +11,6 @@ sudo apt install -y \
   btop \
   chafa \
   cliphist \
-  dunst \
   fastfetch \
   fbset \
   firefox-esr-l10n-en-ca \
@@ -20,11 +19,11 @@ sudo apt install -y \
   fonts-terminus \
   gimp \
   grim \
-  hyprland \
   imagemagick \
   jq \
   lf \
   lxpolkit \
+  mako-notifier \
   network-manager \
   network-manager-applet \
   nftables \
@@ -36,6 +35,8 @@ sudo apt install -y \
   pipewire-alsa \
   psmisc \
   slurp \
+  sway \
+  swaybg \
   swappy \
   tar \
   vim \
@@ -45,7 +46,6 @@ sudo apt install -y \
   wget \
   wlogout \
   wofi \
-  xdg-desktop-portal-gtk \
   xdg-desktop-portal-wlr \
   zsh
 
