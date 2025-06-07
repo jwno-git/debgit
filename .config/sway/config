@@ -29,8 +29,8 @@ set $XDG_SESSION_DESKTOP Sway
 # LOOK AND FEEL #
 
 # Gaps
-gaps inner 6
-gaps outer 6
+gaps inner 5
+gaps outer 5
 
 # Borders
 default_border pixel 1
