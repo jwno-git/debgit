@@ -22,6 +22,7 @@ echo "=== STEP 1: Moving configuration files ==="
 
 sudo apt update && sudo apt install -y \
   curl \
+  libpam0g-dev \
   gpg
 
 echo "Moving dotfiles and configs..."
@@ -232,7 +233,6 @@ sudo apt install -y --no-install-recommends \
   build-essential \
   cmake \
   g++ \
-  libpam0g-dev \
   libcairo2-dev \
   libdrm-dev \
   libgbm-dev \
