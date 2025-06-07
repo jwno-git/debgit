@@ -10,8 +10,8 @@ if [[ -f "$PIDFILE" ]] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
     kill "$(cat "$PIDFILE")"
     rm -f "$PIDFILE"
     
-    # Send notification
-    dunstify "Recording Stopped"
+    # Send notification using notify-send (works with mako)
+    notify-send "Recording Stopped"
     
 else
     # Start recording
@@ -30,4 +30,7 @@ else
     # Start wf-recorder in background and save PID
     wf-recorder -g "$GEOMETRY" -f "$FILENAME" &
     echo $! > "$PIDFILE"
+    
+    # Notify recording started
+    notify-send "Recording Started" "Saving to: $FILENAME"
 fi
