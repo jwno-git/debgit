@@ -18,10 +18,8 @@ flatpak override --user \
 	--filesystem=xdg-config/gtk-3.0 \
 	--filesystem=xdg-config/gtk-4.0 \
 	--env=GTK_THEME=Tokyonight-Dark \
-        --env=HYPRCURSOR_THEME=rose-pine-hyprcursor \
 	--env=XCURSOR_THEME=RosePine \
-	--env=HYPRCURSOR_SIZE=32 \
-        --env=XCURSOR_SIZE=32 \
+	--env=XCURSOR_SIZE=32 \
 	--socket=wayland \
 	--talk-name=org.freedesktop.portal.Desktop
 
