@@ -254,6 +254,8 @@ sudo apt install -y --no-install-recommends \
   pkg-config \
   wayland-protocols
 
+  sudo ldconfig
+
 sleep 2
 
 # #######################################################################################
