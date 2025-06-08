@@ -436,9 +436,7 @@ sudo chmod +x /home/$USER/.local/scripts/toggle_notes.sh
 sudo chmod +x /home/$USER/.local/scripts/toggle_term.sh
 sudo chmod +x /home/$USER/.local/scripts/help_desk.sh
 sudo chmod +x /home/$USER/.local/scripts/vim-term.sh
-sudo chmod +x /home/$USER/.local/scripts/volume-notify.sh
 sudo chmod +x /home/$USER/.local/scripts/wofi-ssh.sh
-sudo chmod +x /home/$USER/.local/scripts/nftables-setup.sh
 
 sleep 2
 
