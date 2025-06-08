@@ -17,7 +17,7 @@ map l open              # l to open
 map h up                # h to go up
 map q quit              # q to quit lf
 map d delete            # d to delete selected file(s)
-map i &eog "$f"         # open image in eog
+map i $flatpak run org.gnome.eog "$f"
 map y copy              # y to yank/copy
 map p paste             # p to put/paste
 map t %sh -c 'case "$f" in *.tar.gz|*.tgz) tar -xzf "$f" ;; *.tar) tar -xf "$f" ;; *) echo "Not a tar archive!" ;; esac'
