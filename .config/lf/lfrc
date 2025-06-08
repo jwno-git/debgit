@@ -12,17 +12,16 @@ set hiddenprefix "."    # Add "." prefix to hidden files for clear visibility
 set icons false         # Disable icons for clean text-only look
 
 # === Keybindings ===
-map <enter> &~/.local/bin/nvim-term.sh "$f"
-map l open              # l to open
-map h up                # h to go up
+map <enter> &~/.local/bin/vim-term.sh "$f"
 map q quit              # q to quit lf
 map d delete            # d to delete selected file(s)
-map i $flatpak run org.gnome.eog "$f"
+map c cut
 map y copy              # y to yank/copy
 map p paste             # p to put/paste
+map i $flatpak run org.gnome.eog "$f"
 map t %sh -c 'case "$f" in *.tar.gz|*.tgz) tar -xzf "$f" ;; *.tar) tar -xf "$f" ;; *) echo "Not a tar archive!" ;; esac'
-map m !mpv "$f"
-map c cut
+map v !mpv "$f"
+
 
 # === Misc ===
 set scrolloff 5         # Keep cursor padding
