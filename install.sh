@@ -226,6 +226,7 @@ sudo apt install -y \
   wlogout \
   wofi \
   xdg-desktop-portal-wlr \
+  xwayland \
   zsh
 
 echo "Installing development packages..."
