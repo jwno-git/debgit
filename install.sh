@@ -282,6 +282,10 @@ echo "Configuring Flatpak overrides..."
 flatpak override --user \
 	--filesystem=xdg-config/gtk-3.0 \
 	--filesystem=xdg-config/gtk-4.0 \
+	--filesystem=/usr/share/themes:ro \
+	--filesystem=/usr/share/icons:ro \
+	--filesystem=home/.themes:ro \
+	--filesystem=home/.icons:ro \
 	--env=GTK_THEME=Tokyonight-Dark \
 	--env=XCURSOR_THEME=RosePine \
 	--env=XCURSOR_SIZE=32 \
