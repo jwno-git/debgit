@@ -218,6 +218,9 @@ sudo apt install -y \
   swaybg \
   swappy \
   tar \
+  tlp \
+  tlp-rdw \
+  thermald \
   vim \
   waybar \
   wireplumber \
