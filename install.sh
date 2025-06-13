@@ -278,8 +278,7 @@ flatpak install -y --user flathub \
 	org.libreoffice.LibreOffice \
 	org.gnome.eog \
 	com.bitwarden.desktop \
-	org.gnome.Calculator \
-	org.standardnotes.standardnotes
+	org.gnome.Calculator
 
 echo "Configuring Flatpak overrides..."
 flatpak override --user \
@@ -455,7 +454,7 @@ cat > /home/$USER/.local/share/applications/bluetoothctl.desktop << 'EOF'
 [Desktop Entry]
 Name=Bluetooth
 Comment=Command-line Bluetooth manager
-Exec=bash -c 'sudo systemctl start bluetooth && foot --app-id=bluetooth --title="Bluetooth Control" bluetoothctl'
+Exec=bash -c '/usr/bin/pkexec systemctl start bluetooth && footclient --app-id=bluetooth --title="Bluetooth Control" bluetoothctl'
 Icon=bluetooth
 Terminal=false
 Type=Application
