@@ -1,10 +1,10 @@
-#!/bin/bash
 
 set -e
 
 # #######################################################################################
 # DEBIAN SWAY INSTALLATION SCRIPT
 # Combined installation script for complete Sway desktop setup
+# Updated: Removed hyprlock, added swaylock
 # #######################################################################################
 
 echo "=================================================="
@@ -22,7 +22,6 @@ echo "=== STEP 1: Moving configuration files ==="
 
 sudo apt update && sudo apt install -y \
   curl \
-  libpam0g-dev \
   gpg
 
 echo "Moving dotfiles and configs..."
@@ -212,11 +211,13 @@ sudo apt install -y \
   pipewire-pulse \
   pipewire-audio \
   pipewire-alsa \
+  pkexec \
   psmisc \
   slurp \
   sway \
   swaybg \
   swappy \
+  swaylock \
   tar \
   tlp \
   tlp-rdw \
@@ -232,24 +233,20 @@ sudo apt install -y \
   xwayland \
   zsh
 
-echo "Installing development packages..."
+echo "Installing development packages (reduced set for hyprpicker only)..."
 sudo apt install -y --no-install-recommends \
   build-essential \
   cmake \
   g++ \
-  libaudit-dev \
   libcairo2-dev \
   libdrm-dev \
   libgbm-dev \
   libgl1-mesa-dev \
   libinput-dev \
   libjpeg-dev \
-  libmagic-dev \
   libpango1.0-dev \
   libpugixml-dev \
   libspa-0.2-bluetooth \
-  libspng-dev \
-  libsdbus-c++-dev \
   libwayland-dev \
   libwebp-dev \
   libxkbcommon-dev \
@@ -307,11 +304,11 @@ flatpak override --user org.libreoffice.Libreoffice \
 sleep 2
 
 # #######################################################################################
-# STEP 5: BUILD HYPR COMPONENTS FROM SOURCE
+# STEP 5: BUILD HYPR COMPONENTS FROM SOURCE (REDUCED SET)
 # #######################################################################################
 
 echo ""
-echo "=== STEP 5: Building Hypr components from source ==="
+echo "=== STEP 5: Building Hypr components from source (hyprpicker only) ==="
 
 cd /home/$USER/
 mkdir -p /home/$USER/.src
@@ -324,7 +321,6 @@ git clone https://github.com/hyprwm/hyprutils /home/$USER/.src/hyprutils
 git clone https://github.com/hyprwm/hyprlang /home/$USER/.src/hyprlang
 git clone https://github.com/hyprwm/hyprwayland-scanner /home/$USER/.src/hyprwayland-scanner
 git clone https://github.com/hyprwm/hyprgraphics /home/$USER/.src/hyprgraphics
-git clone https://github.com/hyprwm/hyprlock /home/$USER/.src/hyprlock
 git clone https://github.com/hyprwm/hyprpicker /home/$USER/.src/hyprpicker
 
 echo "Building Hyprutils..."
@@ -349,12 +345,6 @@ echo "Building Hyprgraphics..."
 cd /home/$USER/.src/hyprgraphics/
 cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
 cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
-sudo cmake --install build
-
-echo "Building Hyprlock..."
-cd /home/$USER/.src/hyprlock/
-cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B ./build
-cmake --build ./build --config Release --target hyprlock -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
 sudo cmake --install build
 
 echo "Building Hyprpicker..."
@@ -579,8 +569,3 @@ echo ""
 echo "=================================================="
 echo "  INSTALLATION COMPLETE!"
 echo "=================================================="
-
-echo "Useful commands:"
-echo "  sudo zram-status.sh          # Check zram status"
-echo "  sudo systemctl status nftables  # Check firewall status"
-echo "  flatpak list --user         # List installed flatpaks"
