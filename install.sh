@@ -424,7 +424,6 @@ sudo cp -r /home/$USER/.src/.zsh /root/.src/
 
 echo "Making scripts executable..."
 sudo chmod +x /home/$USER/.local/scripts/toggle_record.sh
-sudo chmod +x /home/$USER/.local/scripts/toggle_notes.sh
 sudo chmod +x /home/$USER/.local/scripts/toggle_term.sh
 sudo chmod +x /home/$USER/.local/scripts/help_desk.sh
 sudo chmod +x /home/$USER/.local/scripts/vim-term.sh
