@@ -84,7 +84,7 @@ bindsym $mod+c exec cliphist list | wofi -dmenu | cliphist decode | wl-copy
 bindsym $mod+e exec foot -T "lf" lf
 bindsym $mod+l exec hyprlock
 bindsym $mod+m exec flatpak run org.gnome.Calculator
-bindsym $mod+n exec ~/.local/scripts/toggle_notes.sh
+bindsym $mod+n exec brave-browser --app=https://standardnotes.com
 bindsym $mod+p exec hyprpicker -a
 bindsym $mod+q kill
 bindsym $mod+s exec grim -g "$(slurp)" - | swappy -f -
