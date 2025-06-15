@@ -217,7 +217,6 @@ sudo apt install -y \
   sway \
   swaybg \
   swappy \
-  swaylock \
   tar \
   tlp \
   tlp-rdw \
